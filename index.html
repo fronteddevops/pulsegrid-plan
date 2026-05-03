@@ -1,0 +1,3239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulseGrid &mdash; Connected Health Platform | Pitch Proposal</title>
+<meta name="description" content="PulseGrid is a connected health platform unifying hospitals, patients, laboratories, old-age homes, and home care through bedside IoT.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PulseGrid - Pitch Proposal
+   Plain HTML/CSS - light theme, standard properties only
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a1d24;
+  background-color: #fafaf7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container.narrow {
+  max-width: 880px;
+}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.topbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1d24;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav a {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.nav a:hover {
+  color: #dc2626;
+  border-bottom-color: #dc2626;
+}
+
+.doc-tag {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e0;
+}
+
+.hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e0;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  display: inline-block;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #1a1d24;
+  margin-bottom: 32px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.hero-lede {
+  font-size: 20px;
+  line-height: 1.55;
+  color: #5a6068;
+  max-width: 720px;
+  margin-bottom: 56px;
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 44px; }
+  .hero-lede { font-size: 17px; margin-bottom: 40px; }
+}
+
+/* Readouts */
+.readouts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: #e5e5e0;
+  border: 1px solid #e5e5e0;
+  margin-bottom: 56px;
+}
+
+.readout {
+  background-color: #ffffff;
+  padding: 22px 24px 20px;
+}
+
+.readout-label {
+  display: block;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+}
+
+.readout-value {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 36px;
+  font-weight: 500;
+  color: #1a1d24;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.readout-unit {
+  font-size: 13px;
+  font-weight: 400;
+  color: #5a6068;
+  margin-left: 4px;
+}
+
+.readout-bar {
+  height: 4px;
+  background-color: #f4f4ee;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.readout-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  animation: fill 2s ease-out 0.5s both;
+}
+
+@keyframes fill {
+  from { width: 0 !important; }
+}
+
+@media (max-width: 720px) {
+  .readouts { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px;
+  padding-top: 36px;
+  border-top: 1px solid #e5e5e0;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 1;
+  color: #1a1d24;
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .stat-num { font-size: 40px; }
+}
+
+/* ============================================================
+   EXECUTIVE BAND
+   ============================================================ */
+.band {
+  padding: 80px 0;
+  background-color: #fff8f4;
+  border-bottom: 1px solid #e5e5e0;
+}
+
+.band-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #1a1d24;
+  margin: 18px 0 24px;
+}
+
+.band-copy {
+  font-size: 18px;
+  line-height: 1.65;
+  color: #3a3f47;
+  max-width: 800px;
+}
+
+.band-copy em {
+  color: #dc2626;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .band-title { font-size: 28px; }
+  .band-copy { font-size: 16px; }
+}
+
+/* ============================================================
+   GENERIC SECTION
+   ============================================================ */
+.section {
+  padding: 96px 0;
+}
+
+.section-alt {
+  background-color: #ffffff;
+}
+
+.section-head {
+  max-width: 880px;
+  margin-bottom: 56px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #1a1d24;
+  margin: 16px 0 22px;
+}
+
+.section-lede {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #5a6068;
+  max-width: 720px;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+  .section-title { font-size: 30px; }
+  .section-lede { font-size: 15px; }
+}
+
+.tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #dc2626;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* ============================================================
+   GENERIC CARD GRIDS
+   ============================================================ */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1000px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-5 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  padding: 28px 26px;
+  border-radius: 4px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  border-color: #cbd0d6;
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  font-size: 26px;
+  color: #dc2626;
+  margin-bottom: 16px;
+}
+
+.card h3, .card h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.card p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #5a6068;
+}
+
+.section-alt .card {
+  background-color: #fafaf7;
+}
+
+/* ============================================================
+   ECOSYSTEM ROLES
+   ============================================================ */
+.role {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-left: 4px solid #5a6068;
+  padding: 26px 22px 22px;
+  border-radius: 4px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.role:hover {
+  transform: translateY(-3px);
+}
+
+.role-hospital { border-left-color: #dc2626; }
+.role-patient  { border-left-color: #059669; }
+.role-lab      { border-left-color: #d97706; }
+.role-elder    { border-left-color: #1e3a8a; }
+.role-family   { border-left-color: #7c3aed; }
+
+.role-num {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+}
+
+.role h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.role-sub {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+
+.role ul {
+  margin-bottom: 18px;
+}
+
+.role li {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #3a3f47;
+  padding-left: 14px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.role li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: #cbd0d6;
+}
+
+.pill {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 10px;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   ROOM (USP)
+   ============================================================ */
+.room {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .room { grid-template-columns: 1fr; }
+}
+
+.room-visual {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 24px;
+}
+
+.room-list li {
+  padding: 18px 0;
+  border-top: 1px solid #e5e5e0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #3a3f47;
+}
+
+.room-list li:last-child {
+  border-bottom: 1px solid #e5e5e0;
+}
+
+.room-list strong {
+  color: #1a1d24;
+  font-weight: 600;
+}
+
+/* ============================================================
+   HARDWARE
+   ============================================================ */
+.hw {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 24px 22px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.hw:hover {
+  border-color: #cbd0d6;
+  transform: translateY(-2px);
+}
+
+.section-alt .hw {
+  background-color: #fafaf7;
+}
+
+
+.hw-image {
+  background-color: #ffffff;
+  border: 1px solid #f4f4ee;
+  border-radius: 4px;
+  margin: 4px 0 16px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+.hw-image svg {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 100px;
+}
+
+
+/* ============================================================
+   APPLICATIONS
+   ============================================================ */
+
+/* ============================================================
+   COMPETITIVE LANDSCAPE
+   ============================================================ */
+.comp-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-top: 4px solid #5a6068;
+  border-radius: 4px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+}
+.section-alt .comp-card { background-color: #fafaf7; }
+.comp-1 { border-top-color: #1e3a8a; }
+.comp-2 { border-top-color: #7c3aed; }
+.comp-3 { border-top-color: #059669; }
+.comp-4 { border-top-color: #dc2626; }
+.comp-5 { border-top-color: #d97706; }
+.comp-6 { border-top-color: #5a6068; }
+
+.comp-cat {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+.comp-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.comp-what {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #5a6068;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.comp-edge {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1a1d24;
+  padding: 12px 14px;
+  background-color: #fef2f2;
+  border-left: 3px solid #dc2626;
+  border-radius: 0 3px 3px 0;
+  margin: 0;
+}
+.comp-edge strong {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.comp-matrix-wrap {
+  margin-top: 56px;
+  padding-top: 56px;
+  border-top: 1px solid #e5e5e0;
+}
+.comp-matrix-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 24px;
+}
+.comp-matrix-scroll {
+  overflow-x: auto;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+.comp-matrix {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+.comp-matrix th, .comp-matrix td {
+  padding: 12px 14px;
+  text-align: center;
+  font-size: 12.5px;
+  border-bottom: 1px solid #f4f4ee;
+}
+.comp-matrix th {
+  background-color: #fafaf7;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #1a1d24;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.comp-matrix th:first-child {
+  text-align: left;
+}
+.comp-matrix th.comp-us {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+.comp-matrix td {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 14px;
+}
+.comp-matrix td:first-child {
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #3a3f47;
+}
+.comp-matrix td.yes  { color: #059669; }
+.comp-matrix td.part { color: #d97706; }
+.comp-matrix td.no   { color: #cbd0d6; }
+.comp-matrix td.us   { color: #ffffff; background-color: #dc2626; }
+
+.comp-matrix-note {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #5a6068;
+  margin-top: 14px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.app-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.app-card:hover {
+  border-color: #cbd0d6;
+  transform: translateY(-2px);
+}
+.app-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.app-icon {
+  font-size: 26px;
+  color: #1e3a8a;
+}
+.app-platform {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 9px;
+  border: 1px solid #e5e5e0;
+  background-color: #fafaf7;
+  border-radius: 3px;
+}
+.app-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.app-role {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+.app-features {
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+.app-features li {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #3a3f47;
+  padding: 8px 0;
+  border-top: 1px solid #f4f4ee;
+}
+.app-features li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.app-features li strong {
+  color: #1a1d24;
+  font-weight: 600;
+}
+
+/* ============================================================
+   KITS & PRICING
+   ============================================================ */
+.kits-block {
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 1px solid #e5e5e0;
+}
+.kits-head {
+  margin-bottom: 36px;
+}
+.kits-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #1a1d24;
+  letter-spacing: -0.018em;
+  margin-bottom: 12px;
+}
+.kits-sub {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #5a6068;
+  max-width: 760px;
+}
+
+.kit-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-top: 4px solid #5a6068;
+  border-radius: 4px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+.kit-card:hover {
+  transform: translateY(-3px);
+}
+.kit-1 { border-top-color: #dc2626; }
+.kit-2 { border-top-color: #b91c1c; }
+.kit-3 { border-top-color: #1e3a8a; }
+.kit-4 { border-top-color: #7c3aed; }
+.kit-5 { border-top-color: #059669; }
+.kit-6 { border-top-color: #d97706; }
+
+.kit-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.kit-tag {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #dc2626;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  padding: 3px 8px;
+  border: 1px solid #fca5a5;
+  background-color: #fef2f2;
+  border-radius: 3px;
+}
+.kit-buyer {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.kit-card h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
+}
+.kit-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #5a6068;
+  margin-bottom: 16px;
+}
+.kit-includes {
+  margin: 0 0 20px;
+  padding: 0;
+  flex: 1;
+}
+.kit-includes li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #3a3f47;
+  padding: 6px 0 6px 14px;
+  position: relative;
+}
+.kit-includes li:before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: #cbd0d6;
+  font-weight: 600;
+}
+.kit-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 14px;
+  border-top: 1px dashed #e5e5e0;
+}
+.kit-price-label {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.kit-price-value {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1d24;
+  letter-spacing: -0.015em;
+}
+
+.hw-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.hw-num {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  letter-spacing: 0.14em;
+}
+
+.hw-phase {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  color: #d97706;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border: 1px solid #fed7aa;
+  background-color: #fef3c7;
+  border-radius: 3px;
+}
+
+.hw h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.hw-role {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11.5px;
+  color: #5a6068;
+  margin-bottom: 16px;
+}
+
+.specs {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs td {
+  padding: 8px 0;
+  border-top: 1px solid #f4f4ee;
+  font-size: 13px;
+  line-height: 1.45;
+  vertical-align: top;
+}
+
+.specs td:first-child {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: 95px;
+  padding-right: 12px;
+}
+
+.specs td:last-child {
+  color: #3a3f47;
+}
+
+/* ============================================================
+   MODULES
+   ============================================================ */
+.mod {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  padding: 24px 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.mod:hover {
+  border-color: #cbd0d6;
+  transform: translateY(-2px);
+}
+
+.mod-icon {
+  font-size: 22px;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+}
+
+.mod h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.mod p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5a6068;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.mod-tag {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  color: #059669;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   ARCHITECTURE
+   ============================================================ */
+.arch {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.arch-layer {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .arch-layer { grid-template-columns: 1fr; gap: 12px; }
+}
+
+.arch-label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1d24;
+}
+
+.arch-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.arch-tag-1 { color: #dc2626; border: 1px solid #fca5a5; background-color: #fef2f2; }
+.arch-tag-2 { color: #d97706; border: 1px solid #fed7aa; background-color: #fef3c7; }
+.arch-tag-3 { color: #059669; border: 1px solid #a7f3d0; background-color: #ecfdf5; }
+.arch-tag-4 { color: #1e3a8a; border: 1px solid #c7d2fe; background-color: #eef2ff; }
+.arch-tag-5 { color: #7c3aed; border: 1px solid #ddd6fe; background-color: #f5f3ff; }
+
+.arch-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.arch-nodes span {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11.5px;
+  color: #3a3f47;
+  padding: 6px 12px;
+  background-color: #fafaf7;
+  border: 1px solid #e5e5e0;
+  border-radius: 3px;
+}
+
+.arch-proto {
+  grid-column: 1 / -1;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-top: 14px;
+  margin-top: 4px;
+  border-top: 1px dashed #e5e5e0;
+}
+
+/* ============================================================
+   CONNECTIVITY
+   ============================================================ */
+.conn {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.conn-row {
+  padding: 18px 24px;
+  display: grid;
+  grid-template-columns: 1.2fr auto 1.2fr;
+  gap: 18px;
+  align-items: center;
+  border-top: 1px solid #f4f4ee;
+}
+
+.conn-row:first-child {
+  border-top: 0;
+}
+
+@media (max-width: 800px) {
+  .conn-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+.conn-a, .conn-b {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #1a1d24;
+  letter-spacing: -0.005em;
+}
+
+.conn-b {
+  text-align: right;
+}
+
+@media (max-width: 800px) {
+  .conn-b { text-align: left; }
+}
+
+.conn-arrow {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #dc2626;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 5px 12px;
+  border: 1px solid #fca5a5;
+  background-color: #fef2f2;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.conn-row p {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: #5a6068;
+  margin: 0;
+}
+
+.conn-offline {
+  background-color: #ecfdf5;
+  border-top: 1px solid #a7f3d0;
+  padding: 26px 28px;
+}
+
+.conn-offline h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #059669;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.conn-offline p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #1a1d24;
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+.tabs {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e5e5e0;
+  background-color: #fafaf7;
+}
+
+.tab {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5a6068;
+  background: transparent;
+  border: 0;
+  padding: 14px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: #1a1d24;
+}
+
+.tab.is-active {
+  color: #dc2626;
+  border-bottom-color: #dc2626;
+  background-color: #ffffff;
+}
+
+.panels {
+  padding: 28px;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.is-active {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .panel.is-active { grid-template-columns: 1fr; }
+}
+
+.panel-group {
+  background-color: #fafaf7;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 20px 22px;
+}
+
+.panel-group h4 {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #dc2626;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+}
+
+.panel-group ul {
+  margin: 0;
+  padding: 0;
+}
+
+.panel-group li {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #3a3f47;
+  padding: 7px 0;
+  border-top: 1px solid #f4f4ee;
+}
+
+.panel-group li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.panel-group li b {
+  color: #1a1d24;
+  font-weight: 600;
+}
+
+/* ============================================================
+   AI PIPELINE
+   ============================================================ */
+.pipeline.grid-5 {
+  gap: 16px;
+}
+
+.pipe-step {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 24px 20px;
+}
+
+.pipe-n {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #dc2626;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.pipe-step h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+
+.pipe-step p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5a6068;
+}
+
+/* ============================================================
+   API + DATA MODEL
+   ============================================================ */
+.api {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .api { grid-template-columns: 1fr; }
+}
+
+.api h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 18px;
+}
+
+.ep {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid #e5e5e0;
+  align-items: baseline;
+}
+
+.ep p {
+  grid-column: 1 / -1;
+  font-size: 12.5px;
+  color: #5a6068;
+  margin: 6px 0 0;
+  padding-left: 72px;
+}
+
+@media (max-width: 600px) {
+  .ep p { padding-left: 0; }
+}
+
+.m {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+
+.m-get  { color: #059669; border: 1px solid #a7f3d0; background-color: #ecfdf5; }
+.m-post { color: #dc2626; border: 1px solid #fca5a5; background-color: #fef2f2; }
+.m-put  { color: #d97706; border: 1px solid #fed7aa; background-color: #fef3c7; }
+
+.ep code {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 13px;
+  color: #1a1d24;
+}
+
+.schema {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  padding: 16px 20px;
+}
+
+.schema-name {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #dc2626;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+
+.schema table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schema td {
+  padding: 7px 0;
+  font-size: 12.5px;
+  border-top: 1px solid #f4f4ee;
+  vertical-align: top;
+}
+
+.schema tr:first-child td {
+  border-top: 0;
+}
+
+.schema td:nth-child(1) {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  color: #1a1d24;
+  font-weight: 500;
+  width: 40%;
+}
+
+.schema td:nth-child(2) {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  color: #1e3a8a;
+  width: 25%;
+}
+
+.schema td:nth-child(3) {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+}
+
+/* ============================================================
+   ROADMAP
+   ============================================================ */
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.phase {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-left: 4px solid #dc2626;
+  border-radius: 4px;
+  padding: 32px 30px;
+}
+
+.phase:nth-child(2) { border-left-color: #d97706; }
+.phase:nth-child(3) { border-left-color: #059669; }
+.phase:nth-child(4) { border-left-color: #1e3a8a; }
+
+.phase-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #e5e5e0;
+}
+
+.phase-n {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 12px;
+  color: #dc2626;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.phase-time {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.phase h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 12px;
+  letter-spacing: -0.015em;
+}
+
+.phase > p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3a3f47;
+  max-width: 800px;
+  margin-bottom: 24px;
+}
+
+.phase-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 800px) {
+  .phase-cols { grid-template-columns: 1fr; gap: 18px; }
+  .phase h3 { font-size: 22px; }
+}
+
+.phase-cols h5 {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #d97706;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.phase-cols ul {
+  margin: 0;
+}
+
+.phase-cols li {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #3a3f47;
+  padding: 6px 0;
+  border-top: 1px solid #f4f4ee;
+}
+
+.phase-cols li:first-child {
+  border-top: 0;
+}
+
+/* ============================================================
+   GTM
+   ============================================================ */
+.gtm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gtm-step {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.gtm-n {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 52px;
+  font-weight: 500;
+  color: #dc2626;
+  line-height: 1;
+}
+
+.gtm-step h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.gtm-step p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #5a6068;
+  max-width: 720px;
+}
+
+@media (max-width: 600px) {
+  .gtm-step { grid-template-columns: 50px 1fr; gap: 16px; padding: 22px 22px; }
+  .gtm-n { font-size: 42px; }
+  .gtm-step h3 { font-size: 18px; }
+}
+
+/* ============================================================
+   REVENUE
+   ============================================================ */
+.rev {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-alt .rev {
+  background-color: #fafaf7;
+}
+
+.rev h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1d24;
+  letter-spacing: -0.01em;
+}
+
+.rev p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5a6068;
+}
+
+.rev-tag {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #059669;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: auto;
+}
+
+/* ============================================================
+   RISK REGISTER
+   ============================================================ */
+.risks {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.risk {
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: 2fr auto 4fr;
+  gap: 22px;
+  align-items: center;
+  border-top: 1px solid #f4f4ee;
+}
+
+.risk:first-child {
+  border-top: 0;
+}
+
+@media (max-width: 800px) {
+  .risk { grid-template-columns: 1fr; gap: 8px; padding: 16px 20px; }
+}
+
+.risk-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1d24;
+  letter-spacing: -0.005em;
+}
+
+.risk-sev {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 3px;
+  text-align: center;
+  min-width: 60px;
+}
+
+.sev-h { color: #dc2626; border: 1px solid #fca5a5; background-color: #fef2f2; }
+.sev-m { color: #d97706; border: 1px solid #fed7aa; background-color: #fef3c7; }
+.sev-l { color: #059669; border: 1px solid #a7f3d0; background-color: #ecfdf5; }
+
+.risk-mit {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #3a3f47;
+}
+
+/* ============================================================
+   TEAM
+   ============================================================ */
+.member {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  padding: 24px 22px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.member:hover {
+  border-color: #cbd0d6;
+  transform: translateY(-2px);
+}
+
+.section-alt .member {
+  background-color: #fafaf7;
+}
+
+.member-r {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #dc2626;
+  letter-spacing: 0.12em;
+  padding: 5px 10px;
+  background-color: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 3px;
+  margin-bottom: 14px;
+}
+
+.member h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1d24;
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+
+.member p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5a6068;
+}
+
+/* ============================================================
+   CLOSING
+   ============================================================ */
+.closing {
+  background-color: #1a1d24;
+  color: #fafaf7;
+  padding: 96px 0 64px;
+  text-align: center;
+}
+
+.closing .tag {
+  color: #fca5a5;
+}
+
+.closing h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fafaf7;
+  margin: 18px 0 22px;
+}
+
+.closing p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #cbd0d6;
+  max-width: 680px;
+  margin: 0 auto 32px;
+}
+
+.closing-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+.btn {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 13px 22px;
+  border: 1px solid #5a6068;
+  color: #fafaf7;
+  border-radius: 4px;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+  border-color: #fafaf7;
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.closing-sig {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #5a6068;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .closing h2 { font-size: 28px; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background-color: #1a1d24;
+  color: #5a6068;
+  padding: 24px 0;
+  border-top: 1px solid #2a2d34;
+}
+
+.site-footer p {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.section, .band {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.section.is-visible, .band.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+::selection {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #1e3a8a;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section, .band { opacity: 1; transform: none; transition: none; }
+  .dot { animation: none; }
+  .readout-bar-fill { animation: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">
+        <svg viewBox="0 0 32 32" width="24" height="24">
+          <path d="M2 16 H8 L11 9 L15 23 L19 13 L22 18 L26 16 H30" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-name">PulseGrid</span>
+    </a>
+    <nav class="nav">
+      <a href="#problem">Problem</a>
+      <a href="#stakeholders">Ecosystem</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#compliance">Compliance</a>
+    </nav>
+    <span class="doc-tag">Pitch Proposal &middot; v1.0</span>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="top" class="hero">
+  <div class="container">
+    <div class="hero-meta">
+      <span class="dot"></span>
+      <span>CONFIDENTIAL &middot; PITCH DECK &middot; MULTI-MARKET &middot; 2026</span>
+    </div>
+
+    <h1 class="hero-title">
+      The connected <em>nervous system</em><br>
+      for healthcare.
+    </h1>
+
+    <p class="hero-lede">
+      PulseGrid is a single platform that unifies hospitals, patients, laboratories, old-age homes, and home care &mdash; with bedside IoT that watches over the people the system forgets between visits.
+    </p>
+
+    <!-- Live readouts -->
+    <div class="readouts">
+      <div class="readout">
+        <span class="readout-label">HEART RATE</span>
+        <div class="readout-value"><span class="ticker" data-min="68" data-max="78">72</span><span class="readout-unit">bpm</span></div>
+        <div class="readout-bar"><div class="readout-bar-fill" style="width:62%; background:#dc2626"></div></div>
+      </div>
+      <div class="readout">
+        <span class="readout-label">SpO&#8322;</span>
+        <div class="readout-value"><span class="ticker" data-min="96" data-max="99">98</span><span class="readout-unit">%</span></div>
+        <div class="readout-bar"><div class="readout-bar-fill" style="width:96%; background:#059669"></div></div>
+      </div>
+      <div class="readout">
+        <span class="readout-label">BREATH RATE</span>
+        <div class="readout-value"><span class="ticker" data-min="14" data-max="18">16</span><span class="readout-unit">rpm</span></div>
+        <div class="readout-bar"><div class="readout-bar-fill" style="width:54%; background:#d97706"></div></div>
+      </div>
+      <div class="readout">
+        <span class="readout-label">BED PRESSURE</span>
+        <div class="readout-value"><span class="ticker" data-min="42" data-max="48">45</span><span class="readout-unit">kg</span></div>
+        <div class="readout-bar"><div class="readout-bar-fill" style="width:74%; background:#1e3a8a"></div></div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">stakeholder roles unified</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">edge sensors per smart room</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">launch phases over 18 months</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">continuous vital coverage</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">FHIR</div>
+        <div class="stat-label">R4 &middot; multi-market interop</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXECUTIVE SUMMARY ===== -->
+<section class="band">
+  <div class="container narrow">
+    <span class="tag">[ 00 ] EXECUTIVE SUMMARY</span>
+    <h2 class="band-title">A category-defining bet on continuous, contextual care.</h2>
+    <p class="band-copy">
+      Healthcare today is episodic. A patient sees a clinician for 12 minutes, then disappears for weeks. PulseGrid closes that gap with a stack that lives where the patient lives &mdash; at the bedside, on the wrist, on the wall &mdash; feeding a single platform that the hospital, the lab, the old-age home, the family, and the patient all share. The differentiator is not another EMR; it is the <em>data layer underneath</em> the EMR. Sensors that don't sleep. Workflows that don't depend on a stretched-thin nurse remembering to walk in.
+    </p>
+  </div>
+</section>
+
+<!-- ===== PROBLEM ===== -->
+<section id="problem" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 01 ] PROBLEM</span>
+      <h2 class="section-title">Care happens in the gaps. Today, no one is watching the gaps.</h2>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-icon">&#9201;</div>
+        <h3>Episodic, not continuous</h3>
+        <p>A vital sign is taken once a shift on a paper chart. Deterioration that begins at 2 AM is found at the 6 AM round &mdash; often six hours too late.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">&#129513;</div>
+        <h3>Fragmented data silos</h3>
+        <p>The hospital, the lab, the family doctor, and the old-age home each hold a slice. The patient stitches them together with a folder of photocopies.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">&#9888;</div>
+        <h3>Elderly fall risk goes unseen</h3>
+        <p>Falls are the leading cause of injury death in the over-65 group. Most happen at night, in a room where no one is looking.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">&#8635;</div>
+        <h3>Avoidable readmissions</h3>
+        <p>A meaningful share of 30-day hospital readmissions are predictable from at-home vitals &mdash; but that data is never collected.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">&#9786;</div>
+        <h3>Sleep and recovery are invisible</h3>
+        <p>Recovery quality is largely a function of sleep, restlessness, and night-time movement. None of it is measured outside a sleep lab.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">&#9742;</div>
+        <h3>Family is locked out</h3>
+        <p>Adult children paying for elderly care have no objective view of how their parent is doing &mdash; only a phone call, only when something is already wrong.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ECOSYSTEM ===== -->
+<section id="stakeholders" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 02 ] ECOSYSTEM</span>
+      <h2 class="section-title">One platform. Five roles. Shared truth.</h2>
+      <p class="section-lede">PulseGrid is multi-tenant from day one. Every actor in the care journey logs into the same data layer, sees only what they're permitted to see, and contributes to a single longitudinal patient record.</p>
+    </div>
+    <div class="grid-5">
+      <article class="role role-hospital">
+        <div class="role-num">01</div>
+        <h3>Hospitals</h3>
+        <p class="role-sub">Acute &amp; secondary care</p>
+        <ul>
+          <li>Multi-bed live-vitals dashboard at nursing stations</li>
+          <li>Doctor view: trends, alerts, NEWS2 deterioration scores</li>
+          <li>Admin view: bed occupancy, device fleet, audit logs</li>
+          <li>Discharge to home-care continuity in one click</li>
+        </ul>
+        <span class="pill">Web &middot; iPad &middot; Wall display</span>
+      </article>
+      <article class="role role-patient">
+        <div class="role-num">02</div>
+        <h3>Patients</h3>
+        <p class="role-sub">Inpatient &middot; outpatient &middot; home</p>
+        <ul>
+          <li>Personal health timeline &mdash; vitals, prescriptions, reports</li>
+          <li>Consent-gated record sharing with any clinician</li>
+          <li>Wearable sync, medication reminders, symptom log</li>
+          <li>Multilingual UI &middot; English, Spanish, Hindi, Mandarin + 12 more</li>
+        </ul>
+        <span class="pill">iOS &middot; Android</span>
+      </article>
+      <article class="role role-lab">
+        <div class="role-num">03</div>
+        <h3>Laboratories</h3>
+        <p class="role-sub">Diagnostics &amp; pathology</p>
+        <ul>
+          <li>Order intake from any connected hospital or doctor</li>
+          <li>Report upload with structured FHIR-coded results</li>
+          <li>Auto-delivery to ordering doctor and patient app</li>
+          <li>Trend graphs across labs over time, not isolated PDFs</li>
+        </ul>
+        <span class="pill">Web portal &middot; API</span>
+      </article>
+      <article class="role role-elder">
+        <div class="role-num">04</div>
+        <h3>Old-age homes</h3>
+        <p class="role-sub">Long-term &amp; assisted living</p>
+        <ul>
+          <li>Resident-by-resident vital + sleep + fall dashboard</li>
+          <li>Caregiver shift logs and incident reporting</li>
+          <li>Family share-link with curated, privacy-safe summaries</li>
+          <li>Wandering &amp; exit alerts for dementia residents</li>
+        </ul>
+        <span class="pill">Web &middot; tablet &middot; pendant</span>
+      </article>
+      <article class="role role-family">
+        <div class="role-num">05</div>
+        <h3>Family &amp; home care</h3>
+        <p class="role-sub">Aging parents &middot; post-op &middot; chronic care</p>
+        <ul>
+          <li>Glanceable health card for each loved one</li>
+          <li>Configurable alerts &mdash; fall, no-motion, vital deviation</li>
+          <li>Direct line to attending clinician inside the app</li>
+          <li>Multi-family-member access with role permissions</li>
+        </ul>
+        <span class="pill">iOS &middot; Android &middot; Watch</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== USP / SMART ROOM ===== -->
+<section id="usp" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 03 ] THE USP</span>
+      <h2 class="section-title">The Smart Care Room &mdash; our defensible moat.</h2>
+      <p class="section-lede">Software platforms are easy to copy. A bedside hardware footprint, validated through clinical pilots and certified for medical use, is not. PulseGrid's edge is that we ship the room itself.</p>
+    </div>
+
+    <div class="room">
+      <div class="room-visual">
+        <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+          <!-- Room outline -->
+          <rect x="40" y="40" width="720" height="380" rx="6" fill="#fafaf7" stroke="#cbd0d6" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <!-- Bed -->
+          <rect x="200" y="160" width="320" height="180" rx="10" fill="#ffffff" stroke="#5a6068" stroke-width="1.5"/>
+          <rect x="200" y="160" width="60" height="180" rx="6" fill="#e5e5e0" stroke="#5a6068" stroke-width="1.5"/>
+          <!-- Pillow -->
+          <rect x="215" y="180" width="35" height="60" rx="4" fill="#ffffff" stroke="#5a6068" stroke-width="1"/>
+          <!-- Pressure mat -->
+          <rect x="265" y="220" width="240" height="60" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="385" y="255" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5a6068" letter-spacing="1">PRESSURE MAT</text>
+          <!-- Bedside hub -->
+          <rect x="540" y="200" width="60" height="80" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+          <text x="570" y="245" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#059669" font-weight="500">HUB</text>
+          <!-- Wearable -->
+          <circle cx="335" cy="200" r="9" fill="#dc2626"/>
+          <text x="335" y="186" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5a6068" letter-spacing="1">WEARABLE</text>
+          <!-- Radar (ceiling) -->
+          <circle cx="400" cy="80" r="14" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+          <path d="M386 80 a14 14 0 0 0 28 0" fill="none" stroke="#1e3a8a" stroke-width="1"/>
+          <text x="400" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1e3a8a" letter-spacing="1">mmWAVE RADAR</text>
+          <line x1="400" y1="94" x2="400" y2="160" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>
+          <line x1="400" y1="94" x2="320" y2="200" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>
+          <line x1="400" y1="94" x2="480" y2="200" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>
+          <!-- Air quality -->
+          <rect x="80" y="80" width="40" height="40" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1"/>
+          <text x="100" y="135" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5a6068" letter-spacing="1">AIR QUALITY</text>
+          <!-- Floor sensor -->
+          <rect x="180" y="380" width="120" height="14" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+          <text x="240" y="412" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5a6068" letter-spacing="1">FLOOR FALL SENSOR</text>
+          <!-- Door + wandering -->
+          <rect x="690" y="60" width="50" height="80" fill="#e5e5e0" stroke="#5a6068" stroke-width="1"/>
+          <text x="715" y="155" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5a6068" letter-spacing="1">DOOR / WANDER</text>
+          <!-- Pendant -->
+          <circle cx="640" cy="350" r="10" fill="#dc2626"/>
+          <text x="640" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5a6068" letter-spacing="1">SOS PENDANT</text>
+          <!-- Pill dispenser -->
+          <rect x="80" y="300" width="40" height="60" rx="3" fill="#ffffff" stroke="#5a6068" stroke-width="1"/>
+          <text x="100" y="378" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5a6068" letter-spacing="1">PILL DISPENSER</text>
+          <!-- Pulse line wearable to hub -->
+          <line x1="345" y1="200" x2="540" y2="240" stroke="#059669" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+        </svg>
+      </div>
+
+      <ul class="room-list">
+        <li><strong>Continuous, ambient sensing</strong> &mdash; vitals captured by mmWave radar without touching the patient, wearables only when the clinical use case demands it.</li>
+        <li><strong>Privacy-first design</strong> &mdash; radar over cameras wherever possible; cameras only with explicit consent and on-device blur.</li>
+        <li><strong>Edge AI on the bedside hub</strong> &mdash; fall detection, NEWS2 scoring, and sleep staging run locally; the network is for sync, not for safety.</li>
+        <li><strong>Modular kit</strong> &mdash; ICU rooms get the full stack; old-age home rooms get a lighter set; a home-care kit fits in a shoebox.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HARDWARE ===== -->
+<section id="hardware" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 04 ] HARDWARE</span>
+      <h2 class="section-title">The device stack &mdash; what we ship into the room.</h2>
+      <p class="section-lede">Every device below is buildable today on commodity silicon. We design the housings, write the firmware, and certify the bundle as a medical-device system.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H1</span><span class="hw-phase">Phase 1</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="40" width="140" height="55" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><line x1="65" y1="40" x2="65" y2="95" stroke="#d97706" stroke-width="0.6" stroke-dasharray="2 2"/><line x1="100" y1="40" x2="100" y2="95" stroke="#d97706" stroke-width="0.6" stroke-dasharray="2 2"/><line x1="135" y1="40" x2="135" y2="95" stroke="#d97706" stroke-width="0.6" stroke-dasharray="2 2"/><line x1="30" y1="67" x2="170" y2="67" stroke="#d97706" stroke-width="0.6" stroke-dasharray="2 2"/><ellipse cx="100" cy="67" rx="24" ry="12" fill="#dc2626" opacity="0.25"/><path d="M170 67 L185 67 L185 95" fill="none" stroke="#5a6068" stroke-width="1.5"/><circle cx="185" cy="98" r="3" fill="#5a6068"/></svg></div>
+        <h3>Smart Pressure Mat</h3>
+        <p class="hw-role">Under-mattress &middot; bed-exit &middot; restlessness</p>
+        <table class="specs">
+          <tr><td>MCU</td><td>ESP32-S3 (WiFi+BLE, dual-core)</td></tr>
+          <tr><td>Sensing</td><td>Piezo-film &middot; 8-zone load cells</td></tr>
+          <tr><td>Sample rate</td><td>50 Hz raw &middot; 1 Hz aggregated</td></tr>
+          <tr><td>Power</td><td>5V DC &middot; &lt; 0.8 W steady</td></tr>
+          <tr><td>Detects</td><td>Bed presence, turning, sit-up, exit</td></tr>
+        <tr><td>Unit cost</td><td><strong>$80 &ndash; $150</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H2</span><span class="hw-phase">Phase 1</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><path d="M30 60 L75 60 L75 75 L30 75 Z" fill="#1a1d24"/><path d="M125 60 L170 60 L170 75 L125 75 Z" fill="#1a1d24"/><rect x="70" y="42" width="60" height="48" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/><path d="M78 67 L88 67 L91 60 L94 76 L97 55 L100 75 L103 67 L122 67" fill="none" stroke="#dc2626" stroke-width="1.4"/><circle cx="100" cy="80" r="2" fill="#dc2626"/></svg></div>
+        <h3>Vitals Wearable Band</h3>
+        <p class="hw-role">Wrist &middot; 5-day battery &middot; BLE to hub</p>
+        <table class="specs">
+          <tr><td>MCU</td><td>Nordic nRF52840 (BLE 5.2)</td></tr>
+          <tr><td>Sensors</td><td>MAX30102, MLX90615, LIS3DH</td></tr>
+          <tr><td>Battery</td><td>180 mAh LiPo &middot; 5&ndash;7 days</td></tr>
+          <tr><td>Outputs</td><td>HR, SpO&#8322;, skin temp, motion, steps</td></tr>
+          <tr><td>Form</td><td>Silicone strap &middot; IP67</td></tr>
+        <tr><td>Unit cost</td><td><strong>$50 &ndash; $90</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H3</span><span class="hw-phase">Phase 1</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><line x1="100" y1="35" x2="100" y2="22" stroke="#059669" stroke-width="2"/><circle cx="100" cy="20" r="2.5" fill="#059669"/><path d="M86 20 Q100 6 114 20" fill="none" stroke="#059669" stroke-width="1" opacity="0.5"/><path d="M78 23 Q100 -2 122 23" fill="none" stroke="#059669" stroke-width="1" opacity="0.3"/><rect x="50" y="40" width="100" height="65" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/><rect x="60" y="50" width="60" height="30" rx="3" fill="#ffffff" stroke="#059669" stroke-width="1"/><text x="90" y="70" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#059669" font-weight="600">HUB</text><circle cx="135" cy="58" r="3" fill="#059669"/><circle cx="135" cy="68" r="3" fill="#d97706" opacity="0.5"/><circle cx="135" cy="78" r="3" fill="#dc2626" opacity="0.5"/></svg></div>
+        <h3>Bedside Gateway Hub</h3>
+        <p class="hw-role">Brain of the room &middot; edge AI &middot; LTE failover</p>
+        <table class="specs">
+          <tr><td>SoC</td><td>Raspberry Pi CM4 / RK3566</td></tr>
+          <tr><td>Memory</td><td>4 GB LPDDR4 &middot; 32 GB eMMC</td></tr>
+          <tr><td>Edge AI</td><td>Optional Coral USB TPU</td></tr>
+          <tr><td>Connectivity</td><td>WiFi 5, BLE 5.0, Ethernet, LoRa, 4G</td></tr>
+          <tr><td>UPS</td><td>Onboard 18650 cell &middot; 4 hr backup</td></tr>
+        <tr><td>Unit cost</td><td><strong>$160 &ndash; $260</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H4</span><span class="hw-phase">Phase 2</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><line x1="20" y1="20" x2="180" y2="20" stroke="#cbd0d6" stroke-width="1.5" stroke-dasharray="3 3"/><line x1="100" y1="20" x2="100" y2="35" stroke="#1e3a8a" stroke-width="2"/><ellipse cx="100" cy="42" rx="28" ry="9" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/><ellipse cx="100" cy="38" rx="28" ry="8" fill="#eef2ff" stroke="#1e3a8a" stroke-width="1.5"/><circle cx="100" cy="38" r="3" fill="#1e3a8a"/><path d="M70 55 Q100 80 130 55" fill="none" stroke="#1e3a8a" stroke-width="1" opacity="0.6" stroke-dasharray="3 3"/><path d="M55 65 Q100 100 145 65" fill="none" stroke="#1e3a8a" stroke-width="1" opacity="0.4" stroke-dasharray="3 3"/><path d="M40 75 Q100 115 160 75" fill="none" stroke="#1e3a8a" stroke-width="1" opacity="0.25" stroke-dasharray="3 3"/></svg></div>
+        <h3>mmWave Radar Sensor</h3>
+        <p class="hw-role">Contactless &middot; 60 GHz &middot; privacy-friendly</p>
+        <table class="specs">
+          <tr><td>Module</td><td>Seeed MR60BHA1 / TI IWR6843</td></tr>
+          <tr><td>Mount</td><td>Ceiling or above-bed wall</td></tr>
+          <tr><td>Detects</td><td>Respiration, HR, presence, falls</td></tr>
+          <tr><td>Range</td><td>0.5&ndash;6 m &middot; works through bedding</td></tr>
+          <tr><td>Privacy</td><td>Point-cloud only &middot; no images</td></tr>
+        <tr><td>Unit cost</td><td><strong>$80 &ndash; $150</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H5</span><span class="hw-phase">Phase 1</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="35" width="80" height="60" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/><line x1="70" y1="48" x2="100" y2="48" stroke="#059669" stroke-width="1"/><line x1="70" y1="53" x2="100" y2="53" stroke="#059669" stroke-width="1"/><line x1="70" y1="58" x2="100" y2="58" stroke="#059669" stroke-width="1"/><rect x="105" y="45" width="30" height="20" rx="2" fill="#ffffff" stroke="#059669" stroke-width="0.8"/><text x="120" y="58" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#059669">CO2</text><circle cx="80" cy="78" r="4" fill="#d97706" opacity="0.7"/><circle cx="100" cy="78" r="4" fill="#1e3a8a" opacity="0.7"/><circle cx="120" cy="78" r="4" fill="#059669" opacity="0.7"/><path d="M30 65 Q40 60 50 65" fill="none" stroke="#059669" stroke-width="1" opacity="0.5"/><path d="M30 75 Q40 70 50 75" fill="none" stroke="#059669" stroke-width="1" opacity="0.4"/><path d="M150 65 Q160 60 170 65" fill="none" stroke="#059669" stroke-width="1" opacity="0.5"/><path d="M150 75 Q160 70 170 75" fill="none" stroke="#059669" stroke-width="1" opacity="0.4"/></svg></div>
+        <h3>Environment Sensor</h3>
+        <p class="hw-role">Temp &middot; humidity &middot; CO&#8322; &middot; PM2.5 &middot; VOC</p>
+        <table class="specs">
+          <tr><td>MCU</td><td>ESP32-C3 &middot; WiFi+BLE</td></tr>
+          <tr><td>Sensor</td><td>BME688 + SCD41 + PMS7003</td></tr>
+          <tr><td>Critical for</td><td>Respiratory, COPD, post-op patients</td></tr>
+          <tr><td>Power</td><td>USB-C 5V &middot; always-on</td></tr>
+        <tr><td>Unit cost</td><td><strong>$80 &ndash; $120</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H6</span><span class="hw-phase">Phase 1</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><line x1="100" y1="12" x2="80" y2="42" stroke="#5a6068" stroke-width="1.5"/><line x1="100" y1="12" x2="120" y2="42" stroke="#5a6068" stroke-width="1.5"/><circle cx="100" cy="68" r="34" fill="none" stroke="#dc2626" stroke-width="0.8" opacity="0.4"/><circle cx="100" cy="68" r="42" fill="none" stroke="#dc2626" stroke-width="0.6" opacity="0.25"/><circle cx="100" cy="68" r="28" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/><circle cx="100" cy="68" r="18" fill="#dc2626"/><text x="100" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#ffffff" font-weight="700">SOS</text></svg></div>
+        <h3>SOS Pendant</h3>
+        <p class="hw-role">Wireless emergency button &middot; long battery</p>
+        <table class="specs">
+          <tr><td>Radio</td><td>LoRa &middot; regional ISM band (865/868/915 MHz)</td></tr>
+          <tr><td>Battery</td><td>CR2032 &middot; &gt; 18 months</td></tr>
+          <tr><td>Range</td><td>~ 300 m line of sight indoors</td></tr>
+          <tr><td>Form</td><td>Pendant or wristband &middot; IP54</td></tr>
+        <tr><td>Unit cost</td><td><strong>$40 &ndash; $60</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H7</span><span class="hw-phase">Phase 2</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="60" r="42" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/><circle cx="100" cy="60" r="32" fill="#ffffff" stroke="#7c3aed" stroke-width="1"/><line x1="100" y1="28" x2="100" y2="92" stroke="#7c3aed" stroke-width="0.8" opacity="0.5"/><line x1="68" y1="60" x2="132" y2="60" stroke="#7c3aed" stroke-width="0.8" opacity="0.5"/><line x1="77" y1="37" x2="123" y2="83" stroke="#7c3aed" stroke-width="0.8" opacity="0.5"/><line x1="123" y1="37" x2="77" y2="83" stroke="#7c3aed" stroke-width="0.8" opacity="0.5"/><circle cx="100" cy="42" r="3" fill="#dc2626"/><circle cx="115" cy="50" r="3" fill="#d97706"/><circle cx="115" cy="70" r="3" fill="#059669"/><circle cx="100" cy="78" r="3" fill="#1e3a8a"/><circle cx="85" cy="70" r="3" fill="#dc2626"/><circle cx="85" cy="50" r="3" fill="#d97706"/><circle cx="100" cy="60" r="5" fill="#7c3aed"/></svg></div>
+        <h3>Smart Pill Dispenser</h3>
+        <p class="hw-role">Adherence &middot; 28 compartments</p>
+        <table class="specs">
+          <tr><td>MCU</td><td>ESP32-S3 + stepper + load cell</td></tr>
+          <tr><td>Verify</td><td>Load-cell weighs dispense, LED prompt</td></tr>
+          <tr><td>App link</td><td>Skipped-dose alerts to family + clinician</td></tr>
+          <tr><td>Refill</td><td>Caregiver cassette &middot; 28 slots</td></tr>
+        <tr><td>Unit cost</td><td><strong>$120 &ndash; $180</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H8</span><span class="hw-phase">Phase 2</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="40" width="20" height="25" fill="#1a1d24" opacity="0.15"/><rect x="32" y="40" width="16" height="3" fill="#5a6068"/><line x1="10" y1="100" x2="190" y2="100" stroke="#cbd0d6" stroke-width="1" stroke-dasharray="3 3"/><rect x="20" y="65" width="160" height="22" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><line x1="50" y1="65" x2="50" y2="87" stroke="#d97706" stroke-width="0.8" stroke-dasharray="2 2"/><line x1="80" y1="65" x2="80" y2="87" stroke="#d97706" stroke-width="0.8" stroke-dasharray="2 2"/><line x1="110" y1="65" x2="110" y2="87" stroke="#d97706" stroke-width="0.8" stroke-dasharray="2 2"/><line x1="140" y1="65" x2="140" y2="87" stroke="#d97706" stroke-width="0.8" stroke-dasharray="2 2"/><ellipse cx="65" cy="76" rx="13" ry="6" fill="#dc2626" opacity="0.3"/><text x="40" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#5a6068">BED</text></svg></div>
+        <h3>Floor Fall Strip</h3>
+        <p class="hw-role">Bedside floor pressure &middot; backup fall layer</p>
+        <table class="specs">
+          <tr><td>Sensor</td><td>Velostat / piezoresistive sheet</td></tr>
+          <tr><td>Logic</td><td>Bed-exit + impact pattern fusion</td></tr>
+          <tr><td>Redundancy</td><td>Cross-validates radar + IMU events</td></tr>
+          <tr><td>Power</td><td>5V via hub &middot; solid-state</td></tr>
+        <tr><td>Unit cost</td><td><strong>$50 &ndash; $90</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H9</span><span class="hw-phase">Phase 3</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="20" width="80" height="90" fill="none" stroke="#5a6068" stroke-width="2"/><line x1="60" y1="22" x2="60" y2="108" stroke="#5a6068" stroke-width="3"/><path d="M63 25 L120 40 L120 90 L63 105 Z" fill="#fafaf7" stroke="#5a6068" stroke-width="1.5"/><circle cx="115" cy="65" r="2" fill="#5a6068"/><rect x="83" y="14" width="34" height="10" rx="2" fill="#eef2ff" stroke="#1e3a8a" stroke-width="1.2"/><circle cx="100" cy="19" r="2.5" fill="#1e3a8a"/><path d="M100 24 L82 50 L118 50 Z" fill="#1e3a8a" opacity="0.15"/></svg></div>
+        <h3>Wandering Sensor</h3>
+        <p class="hw-role">Door + PIR &middot; for dementia care</p>
+        <table class="specs">
+          <tr><td>MCU</td><td>nRF52 BLE Mesh node</td></tr>
+          <tr><td>Sensing</td><td>Magnetic reed + PIR + ambient light</td></tr>
+          <tr><td>Logic</td><td>Night door open + bed empty = alert</td></tr>
+          <tr><td>Battery</td><td>2x AA &middot; 18+ months</td></tr>
+        <tr><td>Unit cost</td><td><strong>$30 &ndash; $50</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H10</span><span class="hw-phase">Phase 3</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><rect x="55" y="30" width="90" height="60" rx="6" fill="#1a1d24" stroke="#5a6068" stroke-width="1.5"/><circle cx="100" cy="60" r="22" fill="#1a1d24" stroke="#5a6068" stroke-width="1.5"/><circle cx="100" cy="60" r="15" fill="#1e3a8a"/><circle cx="100" cy="60" r="9" fill="#1a1d24"/><circle cx="103" cy="57" r="3" fill="#ffffff" opacity="0.7"/><circle cx="135" cy="42" r="2" fill="#dc2626"/><circle cx="155" cy="95" r="14" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/><path d="M150 92 L150 89 Q150 86 153 86 L157 86 Q160 86 160 89 L160 92" fill="none" stroke="#059669" stroke-width="1.3"/><rect x="148" y="92" width="14" height="9" rx="1" fill="#059669"/></svg></div>
+        <h3>Consent Camera (optional)</h3>
+        <p class="hw-role">Only with consent &middot; on-device blur</p>
+        <table class="specs">
+          <tr><td>Compute</td><td>Runs on the hub &middot; no raw frames in cloud</td></tr>
+          <tr><td>Sensor</td><td>Sony IMX219 1080p &middot; IR for night</td></tr>
+          <tr><td>Privacy</td><td>Edge-blur faces &middot; full audit log</td></tr>
+          <tr><td>Use</td><td>Post-fall ground-truth, on-demand only</td></tr>
+        <tr><td>Unit cost</td><td><strong>$60 &ndash; $100</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H11</span><span class="hw-phase">Phase 3</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><path d="M30 50 L40 35 L180 35 L170 50 Z" fill="#e5e5e0" stroke="#5a6068" stroke-width="1.5"/><rect x="30" y="50" width="140" height="55" rx="4" fill="#fafaf7" stroke="#5a6068" stroke-width="1.5"/><rect x="50" y="62" width="30" height="22" rx="2" fill="#ecfdf5" stroke="#059669" stroke-width="1"/><text x="65" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#059669" font-weight="600">HUB</text><circle cx="105" cy="76" r="9" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/><path d="M101 76 L104 76 L106 71 L108 81 L110 76 L114 76" fill="none" stroke="#dc2626" stroke-width="0.8"/><circle cx="135" cy="76" r="7" fill="#dc2626"/><text x="135" y="79" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" fill="#ffffff" font-weight="700">SOS</text><ellipse cx="160" cy="76" rx="9" ry="4" fill="#eef2ff" stroke="#1e3a8a" stroke-width="1"/></svg></div>
+        <h3>Home-Care Kit</h3>
+        <p class="hw-role">Shoebox-sized &middot; for chronic patients</p>
+        <table class="specs">
+          <tr><td>Includes</td><td>Mini hub, wearable, radar puck, SOS</td></tr>
+          <tr><td>Setup</td><td>QR-onboarded by family in &lt; 5 min</td></tr>
+          <tr><td>Connectivity</td><td>Home WiFi + 4G fallback SIM</td></tr>
+          <tr><td>Audience</td><td>Post-op, elderly parents, chronic care</td></tr>
+        <tr><td>Unit cost</td><td><strong>$300 &ndash; $500</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H12</span><span class="hw-phase">Phase 4</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><rect x="50" y="35" width="100" height="50" rx="22" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/><rect x="55" y="40" width="90" height="40" rx="18" fill="none" stroke="#dc2626" stroke-width="0.6" stroke-dasharray="2 2"/><rect x="85" y="48" width="30" height="24" rx="3" fill="#dc2626"/><path d="M58 60 L75 60 L78 54 L81 68 L84 50 L87 70 L90 60 L110 60 L113 54 L116 68 L119 50 L122 70 L125 60 L142 60" fill="none" stroke="#dc2626" stroke-width="1.3"/><path d="M100 56 C97 53, 92 53, 92 58 C92 62, 100 67, 100 67 C100 67, 108 62, 108 58 C108 53, 103 53, 100 56 Z" fill="#ffffff" opacity="0.9"/></svg></div>
+        <h3>ECG Patch (clinical-grade)</h3>
+        <p class="hw-role">Single-lead disposable &middot; cardiac patients</p>
+        <table class="specs">
+          <tr><td>Module</td><td>ADS1292R AFE &middot; BLE 5.2</td></tr>
+          <tr><td>Wear</td><td>72 hr continuous &middot; adhesive electrode</td></tr>
+          <tr><td>Detects</td><td>AFib, arrhythmias, ST changes</td></tr>
+          <tr><td>Cert track</td><td>CDSCO Class B medical device</td></tr>
+        <tr><td>Unit cost</td><td><strong>$80 &ndash; $150 / patch</strong> USD</td></tr></table>
+      </article>
+
+      <article class="hw">
+        <div class="hw-head"><span class="hw-num">H13</span><span class="hw-phase">Phase 3</span></div>
+        <div class="hw-image"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="80" width="160" height="40" fill="#fef3c7" opacity="0.4"/><line x1="20" y1="80" x2="180" y2="80" stroke="#d97706" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/><text x="170" y="93" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="7" fill="#5a6068">SKIN</text><line x1="100" y1="80" x2="100" y2="105" stroke="#059669" stroke-width="1.5"/><circle cx="100" cy="105" r="2" fill="#059669"/><ellipse cx="100" cy="60" rx="35" ry="8" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/><ellipse cx="100" cy="55" rx="35" ry="8" fill="#a7f3d0" stroke="#059669" stroke-width="1.5"/><ellipse cx="100" cy="50" rx="14" ry="3" fill="#059669"/><text x="100" y="53" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#ffffff" font-weight="700">BT</text><rect x="135" y="35" width="40" height="14" rx="2" fill="#059669"/><text x="155" y="45" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#ffffff" font-weight="700">112mg/dL</text></svg></div>
+        <h3>Continuous Glucose Monitor</h3>
+        <p class="hw-role">CGM patch &middot; 14-day wear &middot; diabetes care</p>
+        <table class="specs">
+          <tr><td>Sensing</td><td>Electrochemical (GOx enzyme) on subcutaneous filament</td></tr>
+          <tr><td>Wear</td><td>14 days continuous &middot; adhesive disc, 5 mm filament</td></tr>
+          <tr><td>Sample rate</td><td>1 reading per 1&ndash;5 min &middot; ~288&ndash;1440 / day</td></tr>
+          <tr><td>Range</td><td>40&ndash;400 mg/dL interstitial glucose</td></tr>
+          <tr><td>Connectivity</td><td>BLE 5.2 to hub or phone &middot; NFC for setup</td></tr>
+          <tr><td>Cert track</td><td>CDSCO Class B medical device</td></tr>
+        <tr><td>Unit cost</td><td><strong>$50 &ndash; $100 / patch</strong> USD</td></tr></table>
+      </article>
+
+    </div>
+
+    <div class="kits-block">
+      <div class="kits-head">
+        <h3 class="kits-title">Pre-configured kits &mdash; how customers actually buy</h3>
+        <p class="kits-sub">Six bundles map to the customer segments in our roadmap. All prices in USD &middot; estimated BOM at moderate sourcing volume; final retail depends on volume, certification, and channel.</p>
+      </div>
+
+      <div class="grid-3 kits-grid">
+        <article class="kit-card kit-1">
+          <div class="kit-head"><span class="kit-tag">Phase 1</span><span class="kit-buyer">Hospital</span></div>
+          <h4>Hospital Smart Room Kit</h4>
+          <p class="kit-desc">The MVP bundle that goes into every Phase-1 pilot bed.</p>
+          <ul class="kit-includes">
+            <li>Bedside Gateway Hub (H3)</li>
+            <li>Smart Pressure Mat (H1)</li>
+            <li>Vitals Wearable Band (H2)</li>
+            <li>Environment Sensor (H5)</li>
+            <li>SOS Pendant (H6)</li>
+          </ul>
+          <div class="kit-price"><span class="kit-price-label">Per room</span><span class="kit-price-value">$400 &ndash; $700</span></div>
+        </article>
+
+        <article class="kit-card kit-2">
+          <div class="kit-head"><span class="kit-tag">Phase 2</span><span class="kit-buyer">Hospital ICU</span></div>
+          <h4>Smart Room Pro Kit</h4>
+          <p class="kit-desc">Full sensor stack for high-acuity wards and ICU rooms.</p>
+          <ul class="kit-includes">
+            <li>Everything in the Phase-1 kit</li>
+            <li>mmWave Radar (H4)</li>
+            <li>Floor Fall Strip (H8)</li>
+            <li>Smart Pill Dispenser (H7)</li>
+          </ul>
+          <div class="kit-price"><span class="kit-price-label">Per room</span><span class="kit-price-value">$700 &ndash; $1,200</span></div>
+        </article>
+
+        <article class="kit-card kit-3">
+          <div class="kit-head"><span class="kit-tag">Phase 2</span><span class="kit-buyer">Old-age home</span></div>
+          <h4>Old-Age Home Kit</h4>
+          <p class="kit-desc">Lighter footprint tuned for long-term care residents.</p>
+          <ul class="kit-includes">
+            <li>Bedside Hub (shared per 2&ndash;4 rooms)</li>
+            <li>Vitals Wearable (H2)</li>
+            <li>mmWave Radar (H4)</li>
+            <li>SOS Pendant (H6)</li>
+            <li>Wandering Sensor (H9)</li>
+          </ul>
+          <div class="kit-price"><span class="kit-price-label">Per resident</span><span class="kit-price-value">$400 &ndash; $650</span></div>
+        </article>
+
+        <article class="kit-card kit-4">
+          <div class="kit-head"><span class="kit-tag">Phase 3</span><span class="kit-buyer">D2C / family</span></div>
+          <h4>Home-Care Kit</h4>
+          <p class="kit-desc">Shoebox-sized kit for chronic care and aging parents at home.</p>
+          <ul class="kit-includes">
+            <li>Mini-hub (smaller hub SKU)</li>
+            <li>Vitals Wearable</li>
+            <li>Radar Puck (compact)</li>
+            <li>SOS button</li>
+            <li>Setup QR code &middot; family-onboarded</li>
+          </ul>
+          <div class="kit-price"><span class="kit-price-label">Per kit</span><span class="kit-price-value">$300 &ndash; $500</span></div>
+        </article>
+
+        <article class="kit-card kit-5">
+          <div class="kit-head"><span class="kit-tag">Phase 3</span><span class="kit-buyer">Diabetic patient</span></div>
+          <h4>Diabetes Add-on</h4>
+          <p class="kit-desc">CGM patch consumable, layered on any base kit.</p>
+          <ul class="kit-includes">
+            <li>Continuous Glucose Monitor patch (H13)</li>
+            <li>14-day continuous wear</li>
+            <li>BLE 5.2 to hub or phone</li>
+            <li>Unlocks Diabetes Management module</li>
+          </ul>
+          <div class="kit-price"><span class="kit-price-label">Per patch</span><span class="kit-price-value">$50 &ndash; $100</span></div>
+        </article>
+
+        <article class="kit-card kit-6">
+          <div class="kit-head"><span class="kit-tag">Phase 4</span><span class="kit-buyer">Cardiac patient</span></div>
+          <h4>Cardiac Add-on</h4>
+          <p class="kit-desc">Clinical-grade ECG patch consumable for cardiac monitoring.</p>
+          <ul class="kit-includes">
+            <li>Single-lead ECG Patch (H12)</li>
+            <li>72-hour continuous wear</li>
+            <li>CDSCO Class B medical device</li>
+            <li>Unlocks AFib + arrhythmia detection</li>
+          </ul>
+          <div class="kit-price"><span class="kit-price-label">Per patch</span><span class="kit-price-value">$80 &ndash; $150</span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLATFORM MODULES ===== -->
+<section id="modules" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 05 ] PLATFORM MODULES</span>
+      <h2 class="section-title">What the software platform actually does.</h2>
+    </div>
+    <div class="grid-4">
+      <div class="mod"><div class="mod-icon">&#9825;</div><h3>Continuous Vitals</h3><p>Time-series ingest of HR, SpO&#8322;, respiration, skin temp, environment &mdash; per-second granularity, queryable by minute, hour, or day.</p><span class="mod-tag">Time-series core</span></div>
+      <div class="mod"><div class="mod-icon">&#9788;</div><h3>Sleep Analytics</h3><p>Pressure-mat + radar fusion classifies sleep stages, restlessness index, and night-wake count. Discharged patients are scored without a sleep lab.</p><span class="mod-tag">Edge fusion</span></div>
+      <div class="mod"><div class="mod-icon">&#9888;</div><h3>Fall Detection</h3><p>Three-layer detection: wearable IMU + mmWave radar + floor strip. Cross-validation cuts false positives; missed-fall risk falls toward zero.</p><span class="mod-tag">Multi-modal</span></div>
+      <div class="mod"><div class="mod-icon">&#9650;</div><h3>Early Warning AI</h3><p>NEWS2 + custom deterioration model running on the hub flags trajectory changes 4&ndash;6 hours before a clinician would normally catch them.</p><span class="mod-tag">Edge ML</span></div>
+      <div class="mod"><div class="mod-icon">&#9875;</div><h3>Medication Adherence</h3><p>Smart dispenser closes the loop. Skipped doses notify the caregiver and clinician. Pharmacy refill triggers automatically.</p><span class="mod-tag">Adherence loop</span></div>
+      <div class="mod"><div class="mod-icon">&#9874;</div><h3>Lab Connectivity</h3><p>Standardised FHIR-coded lab orders and results &mdash; no more PDFs. Trend-graph any analyte across labs and time.</p><span class="mod-tag">FHIR R4</span></div>
+      <div class="mod"><div class="mod-icon">&#9737;</div><h3>Family Share</h3><p>Patient-controlled sharing. Family sees a curated card; clinicians see the clinical view. Consent is auditable and revocable.</p><span class="mod-tag">Consent layer</span></div>
+      <div class="mod"><div class="mod-icon">&#127973;</div><h3>Hospital Workspace</h3><p>Multi-bed wall display, per-patient deep dive, doctor task queue, nurse handoff log, full audit trail.</p><span class="mod-tag">Clinical UX</span></div>
+      <div class="mod"><div class="mod-icon">&#9763;</div><h3>Old-Age-Home Suite</h3><p>Resident roster, shift logs, incident reports, wandering alerts, family share-link with daily digest.</p><span class="mod-tag">Long-term care</span></div>
+      <div class="mod"><div class="mod-icon">&#127470;&#127475;</div><h3>National Health Networks</h3><p>Native bridges to regional health-data backbones &mdash; ABDM (India), NHS Digital (UK), Carequality / DirectTrust (US), HealtheLink. ABHA, NHS Number, MPI handshakes built in.</p><span class="mod-tag">Multi-market</span></div>
+      <div class="mod"><div class="mod-icon">&#128274;</div><h3>Consent &amp; Audit</h3><p>Every record access is logged. Patients can see who viewed what, when, and revoke any sharing in one tap.</p><span class="mod-tag">Compliance core</span></div>
+      <div class="mod"><div class="mod-icon">&#9881;</div><h3>Clinician Copilot</h3><p>Natural-language summaries: "Mr. Sharma, 78, last 24 h: HR rising trend, 3 night wakes, no falls." Saves rounding time.</p><span class="mod-tag">Phase 3 AI</span></div>
+      <div class="mod"><div class="mod-icon">&#129704;</div><h3>Diabetes Management</h3><p>CGM-powered glucose trends, time-in-range scoring, hypo / hyper alerts, meal-impact tagging, and HbA1c estimation &mdash; for diabetic patients at home or in long-term care.</p><span class="mod-tag">Phase 3 hardware</span></div>
+      <div class="mod"><div class="mod-icon">&#128202;</div><h3>Glucose Analytics</h3><p>Daily ambulatory glucose profile (AGP), variability index, dawn-phenomenon detection, and exportable CGM reports for the treating endocrinologist.</p><span class="mod-tag">Diabetes care</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPLICATIONS ===== -->
+<section id="applications" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 06 ] APPLICATIONS &amp; INTERFACES</span>
+      <h2 class="section-title">Nine surfaces. One platform underneath.</h2>
+      <p class="section-lede">Every stakeholder in the care journey gets an interface tuned to their workflow &mdash; from the ICU wall display to a parent's smartwatch &mdash; all backed by the same FHIR-aligned record.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#127973;</span><span class="app-platform">Web &middot; iPad</span></div>
+        <h3>Hospital Dashboard</h3>
+        <p class="app-role">For doctors, nurses, ward administrators</p>
+        <ul class="app-features">
+          <li><strong>Multi-bed wall view</strong> &mdash; live vital tiles for an entire ward, auto-resizing up to 16 beds</li>
+          <li><strong>Patient deep-dive</strong> &mdash; 24-hour timeline of vitals, alerts, lab results, and notes</li>
+          <li><strong>NEWS2 trajectory</strong> &mdash; deterioration score with 4&ndash;6 hour predictive lookahead</li>
+          <li><strong>Nurse task queue</strong> &mdash; auto-prioritised by acuity, with shift handoff log</li>
+          <li><strong>Doctor rounds mode</strong> &mdash; walk through patients with copilot-generated summaries</li>
+          <li><strong>Full audit trail</strong> &mdash; every chart open, every order, every override logged</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#128241;</span><span class="app-platform">iOS &middot; Android</span></div>
+        <h3>Patient App</h3>
+        <p class="app-role">For inpatients, outpatients, discharged patients</p>
+        <ul class="app-features">
+          <li><strong>Personal health timeline</strong> &mdash; vitals, prescriptions, lab reports in one chronological feed</li>
+          <li><strong>Wearable sync</strong> &mdash; continuous HR, SpO&#8322;, sleep, and activity from the band</li>
+          <li><strong>Medication reminders</strong> &mdash; push notifications timed to dispenser dispense events</li>
+          <li><strong>Symptom &amp; pain log</strong> &mdash; quick-tap entry with optional photo or voice note</li>
+          <li><strong>Consent centre</strong> &mdash; see who has accessed your record, revoke any sharing in one tap</li>
+          <li><strong>Multilingual UI</strong> &mdash; English, Spanish, French, German, Portuguese, Mandarin, Arabic, Hindi, Bengali, Tamil + 6 more</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#128106;</span><span class="app-platform">iOS &middot; Android &middot; Watch</span></div>
+        <h3>Family App</h3>
+        <p class="app-role">For adult children of elderly parents, caregivers</p>
+        <ul class="app-features">
+          <li><strong>Glanceable health card</strong> &mdash; today's HR, sleep, activity, fall status for each loved one</li>
+          <li><strong>Configurable alerts</strong> &mdash; fall, no-motion 4 h+, vital deviation, medication missed</li>
+          <li><strong>Daily digest</strong> &mdash; 9 AM push: "Mom slept 6.5 h, no falls, took all meds, RR slightly up"</li>
+          <li><strong>One-tap video call</strong> &mdash; ring the parent's hub display directly</li>
+          <li><strong>Multi-member access</strong> &mdash; siblings get role-based permissions; everyone stays in sync</li>
+          <li><strong>Apple Watch / Wear OS</strong> &mdash; critical alerts on the wrist, even with phone silenced</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#129514;</span><span class="app-platform">Web Portal</span></div>
+        <h3>Lab Portal</h3>
+        <p class="app-role">For diagnostic labs, technicians, lab managers</p>
+        <ul class="app-features">
+          <li><strong>Order intake</strong> &mdash; structured orders from any connected hospital, demographics pre-filled</li>
+          <li><strong>Sample receipt flow</strong> &mdash; barcode scan, chain-of-custody log, status updates to ordering doctor</li>
+          <li><strong>FHIR-coded reporting</strong> &mdash; structured Observation + DiagnosticReport, no PDFs</li>
+          <li><strong>Auto-delivery</strong> &mdash; results push to ordering doctor's queue and patient app simultaneously</li>
+          <li><strong>Cross-lab trends</strong> &mdash; graph any analyte across labs and time, not isolated PDFs</li>
+          <li><strong>LIS API</strong> &mdash; bulk integration with existing lab information systems via REST + HL7</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#127968;</span><span class="app-platform">Web &middot; Tablet</span></div>
+        <h3>Old-Age Home Suite</h3>
+        <p class="app-role">For care home administrators, nurses, caregivers</p>
+        <ul class="app-features">
+          <li><strong>Resident roster</strong> &mdash; photo, room, primary caregiver, emergency contact, care plan</li>
+          <li><strong>Multi-resident dashboard</strong> &mdash; vitals, sleep, falls, wandering events at a glance</li>
+          <li><strong>Caregiver shift log</strong> &mdash; timestamped notes, handoff at end of shift, searchable history</li>
+          <li><strong>Incident reporting</strong> &mdash; structured workflow with photo attachments and outcome tracking</li>
+          <li><strong>Family share-link</strong> &mdash; per-resident curated digest with privacy-safe summaries</li>
+          <li><strong>Medication round</strong> &mdash; dispenser sync, manual confirmation, missed-dose escalation</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#129658;</span><span class="app-platform">iOS &middot; Android</span></div>
+        <h3>Clinician App</h3>
+        <p class="app-role">For doctors on call, between hospital visits</p>
+        <ul class="app-features">
+          <li><strong>Critical alert push</strong> &mdash; bypasses do-not-disturb, one-tap acknowledge with disposition</li>
+          <li><strong>Patient task queue</strong> &mdash; review NEWS2 changes, sign off on plans, approve discharges</li>
+          <li><strong>Copilot summaries</strong> &mdash; "Mr. Sharma, 78, last 24 h: HR rising trend, 3 night wakes"</li>
+          <li><strong>Voice prescription</strong> &mdash; dictate orders or prescriptions, structured by NLP, signed in-app</li>
+          <li><strong>Secure messaging</strong> &mdash; colleague chat tied to patient context, not a separate inbox</li>
+          <li><strong>Apple Watch</strong> &mdash; critical alerts only, glanceable response without phone</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#128250;</span><span class="app-platform">TV / Large Display</span></div>
+        <h3>Wall Display</h3>
+        <p class="app-role">For nursing stations, ICU control rooms</p>
+        <ul class="app-features">
+          <li><strong>Always-on dashboard</strong> &mdash; full-screen view of every monitored bed in the unit</li>
+          <li><strong>Auto-resize tiles</strong> &mdash; up to 16 beds per screen, scales font and chart density</li>
+          <li><strong>Critical-event flash</strong> &mdash; visual + audible alarm with bed-number callout</li>
+          <li><strong>Auto-rotate views</strong> &mdash; cycle by ward, by acuity, by alert level</li>
+          <li><strong>Touch + non-touch</strong> &mdash; touch-enabled at ward stations, view-only in patient corridors</li>
+          <li><strong>Per-station config</strong> &mdash; layout and rotation tuned to each nursing team's preference</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#9881;</span><span class="app-platform">Web Console</span></div>
+        <h3>Admin Console</h3>
+        <p class="app-role">For hospital IT, multi-site administrators</p>
+        <ul class="app-features">
+          <li><strong>Multi-tenancy</strong> &mdash; manage hospitals, wards, teams, users from a single root tenant</li>
+          <li><strong>Device fleet view</strong> &mdash; per-device firmware, battery, RSSI, uptime, last-seen</li>
+          <li><strong>SSO &amp; RBAC</strong> &mdash; SAML / OIDC integration, role-based access controls per tenant</li>
+          <li><strong>Audit log explorer</strong> &mdash; full-text search across every record access and action</li>
+          <li><strong>Billing &amp; usage</strong> &mdash; subscription tier, beds connected, alerts triggered, breakdown by ward</li>
+          <li><strong>Partner API keys</strong> &mdash; create, scope, rotate, revoke; usage analytics per key</li>
+        </ul>
+      </article>
+
+      <article class="app-card">
+        <div class="app-head"><span class="app-icon">&#8986;</span><span class="app-platform">watchOS &middot; Wear OS</span></div>
+        <h3>Watch Companion</h3>
+        <p class="app-role">Quick vitals + emergency response, on the wrist</p>
+        <ul class="app-features">
+          <li><strong>Live vitals glance</strong> &mdash; HR, SpO&#8322;, steps, sleep score from the connected wearable</li>
+          <li><strong>Fall detection cross-check</strong> &mdash; watch IMU validates radar + floor-strip events</li>
+          <li><strong>SOS trigger</strong> &mdash; one button to push pendant-equivalent alert to family + clinician</li>
+          <li><strong>Hub pairing</strong> &mdash; in-room control: call nurse, dim lights, raise bed (where supported)</li>
+          <li><strong>Activity rings</strong> &mdash; tuned for elderly users: lower targets, gentler streaks</li>
+          <li><strong>ECG companion</strong> &mdash; Phase 4 integration with on-watch ECG for at-home rhythm strip</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARCHITECTURE ===== -->
+<section id="architecture" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 07 ] ARCHITECTURE</span>
+      <h2 class="section-title">Layered architecture &mdash; edge to cloud to clinician.</h2>
+      <p class="section-lede">Five layers, each with strict contracts. The bedside hub is the pivot &mdash; it can run safety logic without the cloud being available.</p>
+    </div>
+
+    <div class="arch">
+      <div class="arch-layer">
+        <div class="arch-label"><span class="arch-tag arch-tag-1">L1</span> Edge Devices</div>
+        <div class="arch-nodes">
+          <span>Pressure Mat</span><span>Wearable Band</span><span>mmWave Radar</span><span>Environment</span><span>SOS Pendant</span><span>Pill Dispenser</span><span>ECG Patch</span><span>CGM Patch</span>
+        </div>
+        <div class="arch-proto">&darr; BLE 5.0 &middot; LoRa &middot; WiFi to local hub</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-label"><span class="arch-tag arch-tag-2">L2</span> Bedside Hub &middot; Edge AI</div>
+        <div class="arch-nodes">
+          <span>Sensor fusion</span><span>NEWS2 scorer</span><span>Fall classifier</span><span>Sleep stager</span><span>Local cache</span><span>Offline mode</span>
+        </div>
+        <div class="arch-proto">&darr; MQTT over TLS &middot; gRPC &middot; 4G LTE failover</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-label"><span class="arch-tag arch-tag-3">L3</span> Cloud Backbone</div>
+        <div class="arch-nodes">
+          <span>Ingest service</span><span>TimescaleDB</span><span>FHIR store</span><span>Object storage</span><span>Pub/sub bus</span><span>Notification fan-out</span>
+        </div>
+        <div class="arch-proto">&darr; REST &middot; GraphQL &middot; WebSocket &middot; FHIR R4 APIs</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-label"><span class="arch-tag arch-tag-4">L4</span> AI &amp; Analytics</div>
+        <div class="arch-nodes">
+          <span>Deterioration model</span><span>Sleep quality</span><span>Adherence engine</span><span>Anomaly detection</span><span>Clinician copilot LLM</span>
+        </div>
+        <div class="arch-proto">&darr; Inference results to apps + cloud + hub</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-label"><span class="arch-tag arch-tag-5">L5</span> Apps &middot; Integrations</div>
+        <div class="arch-nodes">
+          <span>Hospital web</span><span>Patient mobile</span><span>Lab portal</span><span>Old-age-home web</span><span>Family mobile</span><span>Health Networks (ABDM/NHS/Carequality)</span><span>HL7 / EMR connectors</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONNECTIVITY ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 08 ] CONNECTIVITY &amp; OFFLINE</span>
+      <h2 class="section-title">Resilient by design &mdash; care doesn't stop when the WiFi does.</h2>
+    </div>
+    <div class="conn">
+      <div class="conn-row"><span class="conn-a">Wearable Band</span><span class="conn-arrow">BLE 5.0</span><span class="conn-b">Bedside Hub</span><p>Encrypted GATT &middot; 1 s vital frames &middot; auto-pairing on first power-on.</p></div>
+      <div class="conn-row"><span class="conn-a">mmWave Radar</span><span class="conn-arrow">UART / WiFi</span><span class="conn-b">Bedside Hub</span><p>Point-cloud features only &middot; raw RF never leaves device.</p></div>
+      <div class="conn-row"><span class="conn-a">SOS Pendant</span><span class="conn-arrow">LoRa (regional)</span><span class="conn-b">Hub Gateway</span><p>Regional ISM band (865/868/915 MHz) &middot; sub-GHz penetrates walls &middot; multi-year battery.</p></div>
+      <div class="conn-row"><span class="conn-a">Bedside Hub</span><span class="conn-arrow">MQTT/TLS</span><span class="conn-b">Cloud Ingest</span><p>QoS 1 &middot; TLS 1.3 &middot; device identity via X.509 cert.</p></div>
+      <div class="conn-row"><span class="conn-a">Cloud</span><span class="conn-arrow">FCM / APNs</span><span class="conn-b">Family + Clinician Apps</span><p>Critical-channel notifications bypass do-not-disturb on patient consent.</p></div>
+      <div class="conn-row"><span class="conn-a">Hospital EMR</span><span class="conn-arrow">HL7 v2 + FHIR</span><span class="conn-b">PulseGrid Cloud</span><p>Bidirectional patient demographics &middot; admission events &middot; result delivery.</p></div>
+
+      <div class="conn-offline">
+        <h3>Offline-first safety contract</h3>
+        <p>If the cloud is unreachable, the bedside hub continues to: (a) capture and locally store every reading for up to 7 days, (b) run NEWS2 + fall detection with full alerting on the in-room display and pendant buzzer, (c) trigger LTE failover for critical alerts only. When connectivity returns, all data syncs in the original timestamp order.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH STACK ===== -->
+<section id="stack" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 09 ] TECH STACK</span>
+      <h2 class="section-title">A pragmatic stack &mdash; boring where boring matters, bold where it pays.</h2>
+    </div>
+
+    <div class="tabs">
+      <div class="tab-bar">
+        <button class="tab is-active" data-tab="hw">Hardware</button>
+        <button class="tab" data-tab="fw">Firmware</button>
+        <button class="tab" data-tab="be">Backend</button>
+        <button class="tab" data-tab="ai">AI / ML</button>
+        <button class="tab" data-tab="fe">Apps</button>
+        <button class="tab" data-tab="cloud">Cloud / DevOps</button>
+      </div>
+
+      <div class="panels">
+        <div class="panel is-active" data-panel="hw">
+          <div class="panel-group"><h4>Microcontrollers</h4><ul><li><b>ESP32-S3</b> &mdash; WiFi + BLE for mat &amp; dispenser</li><li><b>nRF52840</b> &mdash; low-power BLE for wearable + pendant</li><li><b>Raspberry Pi CM4</b> / <b>Rockchip RK3566</b> &mdash; bedside hub</li></ul></div>
+          <div class="panel-group"><h4>Sensors</h4><ul><li><b>MAX30102</b> SpO&#8322; + PPG</li><li><b>MLX90615</b> contactless temperature</li><li><b>LIS3DH</b> 3-axis accelerometer</li><li><b>BME688</b> gas / VOC / humidity</li><li><b>SCD41</b> CO&#8322; NDIR</li><li><b>IWR6843</b> / <b>MR60BHA1</b> 60 GHz mmWave</li></ul></div>
+          <div class="panel-group"><h4>Connectivity</h4><ul><li><b>BLE 5.2</b> in-room links</li><li><b>LoRa</b> regional ISM band &middot; facility-wide low-power</li><li><b>WiFi 5 / Ethernet</b> hub backhaul</li><li><b>4G LTE</b> SIM failover</li></ul></div>
+        </div>
+
+        <div class="panel" data-panel="fw">
+          <div class="panel-group"><h4>Embedded</h4><ul><li><b>ESP-IDF / Zephyr RTOS</b> on ESP32 + nRF</li><li><b>FreeRTOS tasks</b> for sensor + radio scheduling</li><li><b>PlatformIO</b> build &amp; OTA pipeline</li><li><b>MQTT 5</b> client with QoS 1 + persistent session</li></ul></div>
+          <div class="panel-group"><h4>Hub OS</h4><ul><li><b>Yocto / Buildroot</b> minimal Linux</li><li><b>Docker Compose</b> for local services</li><li><b>BalenaCloud / Mender</b> fleet OTA</li><li><b>SQLite + LiteFS</b> local timeseries cache</li></ul></div>
+          <div class="panel-group"><h4>Security</h4><ul><li><b>Secure Boot</b> + flash encryption</li><li><b>X.509 device identity</b> via private CA</li><li><b>TLS 1.3</b> mutual auth</li><li><b>Hardware RNG</b> for key generation</li></ul></div>
+        </div>
+
+        <div class="panel" data-panel="be">
+          <div class="panel-group"><h4>Runtime</h4><ul><li><b>Node.js 20 LTS</b> + <b>TypeScript</b> for API</li><li><b>NestJS</b> for service structure</li><li><b>Go 1.22</b> for the high-throughput ingest service</li></ul></div>
+          <div class="panel-group"><h4>Data</h4><ul><li><b>PostgreSQL 16</b> &mdash; transactional</li><li><b>TimescaleDB</b> &mdash; vital time-series</li><li><b>Medplum / HAPI FHIR</b> &mdash; clinical record (R4)</li><li><b>Redis 7</b> &mdash; cache + pub/sub</li><li><b>S3-compatible</b> object storage</li></ul></div>
+          <div class="panel-group"><h4>Messaging &amp; Auth</h4><ul><li><b>EMQX</b> production MQTT broker</li><li><b>Kafka / Redpanda</b> internal event bus</li><li><b>Keycloak</b> identity + RBAC</li><li><b>OAuth 2 / OIDC</b> external partners</li></ul></div>
+        </div>
+
+        <div class="panel" data-panel="ai">
+          <div class="panel-group"><h4>Edge inference</h4><ul><li><b>TensorFlow Lite</b> + <b>Coral TPU</b></li><li><b>Fall classifier</b> &mdash; 1D-CNN over IMU + radar</li><li><b>NEWS2 scorer</b> &mdash; rule-based + ML residual</li><li><b>Sleep stager</b> &mdash; CNN-LSTM</li></ul></div>
+          <div class="panel-group"><h4>Cloud models</h4><ul><li><b>Deterioration prediction</b> &mdash; gradient-boosted</li><li><b>Adherence anomaly</b> &mdash; isolation forest</li><li><b>Vital trend forecasting</b> &mdash; Prophet</li><li><b>Clinician copilot</b> &mdash; LLM with RAG</li></ul></div>
+          <div class="panel-group"><h4>Tooling</h4><ul><li><b>PyTorch + ONNX</b> portable models</li><li><b>MLflow</b> tracking + registry</li><li><b>Great Expectations</b> data validation</li><li><b>Evidently AI</b> drift monitoring</li></ul></div>
+        </div>
+
+        <div class="panel" data-panel="fe">
+          <div class="panel-group"><h4>Mobile</h4><ul><li><b>React Native</b> + <b>Expo SDK 51</b> &mdash; iOS + Android</li><li><b>TypeScript</b>, <b>Redux Toolkit</b></li><li><b>Reanimated 3</b>, <b>Victory Native</b> charts</li><li><b>Apple Watch / Wear OS</b> companion (Phase 3)</li></ul></div>
+          <div class="panel-group"><h4>Web (clinical)</h4><ul><li><b>Next.js 14</b> App Router</li><li><b>tRPC</b> typed API contracts</li><li><b>TanStack Table + Charts</b></li><li><b>Radix UI</b> + custom design system</li></ul></div>
+          <div class="panel-group"><h4>Localisation</h4><ul><li><b>i18next</b> &mdash; English, Spanish, French, German, Portuguese, Mandarin, Arabic, Hindi, Bengali, Tamil &middot; +6 more</li><li><b>Voice prompts</b> for low-literacy elderly users</li></ul></div>
+        </div>
+
+        <div class="panel" data-panel="cloud">
+          <div class="panel-group"><h4>Hosting</h4><ul><li><b>AWS multi-region</b> &middot; Mumbai, Frankfurt, N. Virginia, Cape Town</li><li><b>EKS</b> services &middot; <b>RDS</b> Postgres &middot; <b>MSK</b> Kafka</li><li><b>CloudFront</b> CDN &middot; <b>Route 53</b> DNS</li><li><b>Regional data residency</b> &middot; data stays in market by default</li></ul></div>
+          <div class="panel-group"><h4>Observability</h4><ul><li><b>Prometheus + Grafana</b> metrics</li><li><b>Loki</b> logs &middot; <b>Tempo</b> traces</li><li><b>Sentry</b> on apps + backend</li><li><b>UptimeRobot</b> + <b>StatusPage</b></li></ul></div>
+          <div class="panel-group"><h4>CI/CD &amp; security</h4><ul><li><b>GitHub Actions</b> &middot; <b>Argo CD</b> GitOps</li><li><b>Trivy</b> + <b>Snyk</b> SCA</li><li><b>AWS WAF</b> &middot; private VPC subnets</li><li><b>Vault</b> secrets &middot; <b>KMS</b> envelope encryption</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI PIPELINE ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 10 ] AI / ML PIPELINE</span>
+      <h2 class="section-title">Where the models live, and what they protect against.</h2>
+    </div>
+    <div class="grid-5 pipeline">
+      <div class="pipe-step"><div class="pipe-n">A</div><h4>Ingest &amp; fuse</h4><p>Per-second vitals + pressure mat + radar streams enter the hub. Sensor fusion produces a 1 Hz unified frame: HR, SpO&#8322;, breath, restlessness, presence, posture.</p></div>
+      <div class="pipe-step"><div class="pipe-n">B</div><h4>Edge models</h4><p>Fall classifier, NEWS2 scorer, sleep stager run on the hub. Latency &lt; 1 s for fall alerts; never depends on the network.</p></div>
+      <div class="pipe-step"><div class="pipe-n">C</div><h4>Cloud models</h4><p>24-hour rolling windows feed deterioration prediction, adherence anomaly, and personalised baselines. Re-trained weekly.</p></div>
+      <div class="pipe-step"><div class="pipe-n">D</div><h4>Decision routing</h4><p>Critical: pendant buzzer + nurse station + family push, all simultaneously. Non-critical: daily digest. Predictive: clinician task queue.</p></div>
+      <div class="pipe-step"><div class="pipe-n">E</div><h4>Clinician copilot</h4><p>Phase 3 LLM summarises a patient's last 24 h in two sentences for handoff and rounding, with citations back into the raw timeline.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== API + DATA ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 11 ] API &amp; DATA MODEL</span>
+      <h2 class="section-title">Typed, FHIR-aligned, machine-friendly.</h2>
+    </div>
+
+    <div class="api">
+      <div class="api-col">
+        <h3>Core REST endpoints</h3>
+        <div class="ep"><span class="m m-post">POST</span><code>/v1/devices/register</code><p>Register a new edge device with X.509 cert.</p></div>
+        <div class="ep"><span class="m m-post">POST</span><code>/v1/vitals/stream</code><p>Hub-to-cloud time-series ingest, batched.</p></div>
+        <div class="ep"><span class="m m-get">GET</span><code>/v1/patients/:id/timeline</code><p>Unified vitals + events + reports stream.</p></div>
+        <div class="ep"><span class="m m-get">GET</span><code>/v1/patients/:id/news2</code><p>Latest deterioration score + 24 h trajectory.</p></div>
+        <div class="ep"><span class="m m-post">POST</span><code>/v1/alerts/fall</code><p>Hub reports a fall event with sensor evidence bundle.</p></div>
+        <div class="ep"><span class="m m-post">POST</span><code>/v1/labs/orders</code><p>Doctor to lab order, FHIR ServiceRequest.</p></div>
+        <div class="ep"><span class="m m-put">PUT</span><code>/v1/labs/results/:orderId</code><p>Lab to cloud, FHIR Observation + DiagnosticReport.</p></div>
+        <div class="ep"><span class="m m-post">POST</span><code>/v1/consent/grant</code><p>Patient grants/revokes record access (ABDM-aligned).</p></div>
+        <div class="ep"><span class="m m-get">GET</span><code>/v1/family/:patientId/digest</code><p>Privacy-curated daily summary card.</p></div>
+      </div>
+
+      <div class="api-col">
+        <h3>Data model &mdash; selected entities</h3>
+        <div class="schema">
+          <div class="schema-name">Patient</div>
+          <table>
+            <tr><td>id</td><td>UUID</td><td>primary</td></tr>
+            <tr><td>abhaId</td><td>String</td><td>ABDM optional</td></tr>
+            <tr><td>demographics</td><td>FHIR Patient</td><td>R4</td></tr>
+            <tr><td>roomId</td><td>UUID</td><td>nullable</td></tr>
+            <tr><td>consents</td><td>Consent[]</td><td>scoped</td></tr>
+          </table>
+        </div>
+        <div class="schema">
+          <div class="schema-name">VitalReading</div>
+          <table>
+            <tr><td>patientId</td><td>UUID</td><td>indexed</td></tr>
+            <tr><td>deviceId</td><td>UUID</td><td>provenance</td></tr>
+            <tr><td>metric</td><td>enum</td><td>HR &middot; SpO&#8322; &middot; RR &middot; TEMP</td></tr>
+            <tr><td>value</td><td>Number</td><td>SI units</td></tr>
+            <tr><td>ts</td><td>Timestamptz</td><td>hyper-table key</td></tr>
+          </table>
+        </div>
+        <div class="schema">
+          <div class="schema-name">Event</div>
+          <table>
+            <tr><td>type</td><td>enum</td><td>FALL &middot; BED_EXIT &middot; WANDER</td></tr>
+            <tr><td>severity</td><td>enum</td><td>info &middot; warn &middot; critical</td></tr>
+            <tr><td>evidence</td><td>JSONB</td><td>fused sensor bundle</td></tr>
+            <tr><td>resolution</td><td>enum</td><td>auto &middot; clinician &middot; false-alarm</td></tr>
+          </table>
+        </div>
+        <div class="schema">
+          <div class="schema-name">Device</div>
+          <table>
+            <tr><td>kind</td><td>enum</td><td>HUB &middot; MAT &middot; BAND</td></tr>
+            <tr><td>tenantId</td><td>UUID</td><td>multi-tenant</td></tr>
+            <tr><td>fwVersion</td><td>String</td><td>semver</td></tr>
+            <tr><td>health</td><td>JSONB</td><td>battery &middot; rssi &middot; uptime</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section id="roadmap" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 12 ] PHASED ROADMAP</span>
+      <h2 class="section-title">Eighteen months. Four phases. One outcome.</h2>
+      <p class="section-lede">Each phase ships a standalone product to a defined customer segment. We monetise from Phase 1; Phases 2&ndash;4 expand TAM and depth.</p>
+    </div>
+
+    <div class="roadmap">
+      <article class="phase">
+        <header class="phase-head">
+          <span class="phase-n">Phase 01</span>
+          <span class="phase-time">Months 1 &ndash; 4 &middot; Foundation</span>
+        </header>
+        <h3>Hospital Smart Room MVP</h3>
+        <p>Bedside hub + pressure mat + wearable band + environment sensor. Hospital web dashboard. Patient mobile app v1. Basic alerts and audit trail. Deploy to 1&ndash;2 pilot hospitals.</p>
+        <div class="phase-cols">
+          <div><h5>Hardware</h5><ul><li>Bedside hub (CM4)</li><li>Pressure mat v1</li><li>Vitals wearable v1</li><li>Environment sensor</li><li>SOS pendant</li></ul></div>
+          <div><h5>Software</h5><ul><li>Ingest + time-series store</li><li>Hospital web dashboard</li><li>Patient mobile app</li><li>NEWS2 deterioration score</li><li>Audit + RBAC</li></ul></div>
+          <div><h5>Outcomes</h5><ul><li>2 pilot hospitals live</li><li>50&ndash;100 instrumented beds</li><li>Clinical validation report</li><li>CDSCO Class A device file initiated</li></ul></div>
+        </div>
+      </article>
+
+      <article class="phase">
+        <header class="phase-head">
+          <span class="phase-n">Phase 02</span>
+          <span class="phase-time">Months 5 &ndash; 8 &middot; Care Continuum</span>
+        </header>
+        <h3>Old-Age Homes, Labs, and Family Layer</h3>
+        <p>mmWave radar, floor fall strip, smart pill dispenser join the kit. Old-age home suite, lab portal with FHIR, and the family mobile app go live. ABDM bridge ships.</p>
+        <div class="phase-cols">
+          <div><h5>Hardware</h5><ul><li>mmWave radar module</li><li>Floor fall strip</li><li>Smart pill dispenser</li><li>Hub LTE failover</li></ul></div>
+          <div><h5>Software</h5><ul><li>Old-age home dashboard</li><li>Lab portal + FHIR orders/results</li><li>Family mobile app</li><li>Consent &amp; ABDM HIP/HIU flows</li><li>Multilingual UI (15+ languages across launch markets)</li></ul></div>
+          <div><h5>Outcomes</h5><ul><li>5 old-age homes onboarded</li><li>3 labs integrated</li><li>10 000 family-app installs</li><li>Public ABDM milestone certification</li></ul></div>
+        </div>
+      </article>
+
+      <article class="phase">
+        <header class="phase-head">
+          <span class="phase-n">Phase 03</span>
+          <span class="phase-time">Months 9 &ndash; 12 &middot; Intelligence</span>
+        </header>
+        <h3>The AI &amp; Home-Care Layer</h3>
+        <p>Sleep analytics, predictive deterioration, clinician copilot, wandering sensor, and consented camera. Home-care kit launches for post-discharge and aging-parent buyers.</p>
+        <div class="phase-cols">
+          <div><h5>Hardware</h5><ul><li>Wandering door sensor</li><li>Consent camera (optional)</li><li>Continuous Glucose Monitor (CGM) patch</li><li>Home-care kit (mini-hub bundle)</li></ul></div>
+          <div><h5>Software</h5><ul><li>Sleep stage analytics</li><li>Deterioration prediction model</li><li>Clinician copilot (LLM + RAG)</li><li>Apple Watch / Wear OS app</li><li>D2C onboarding flow</li></ul></div>
+          <div><h5>Outcomes</h5><ul><li>D2C home-care launch</li><li>Validated 4&ndash;6 hr early warning</li><li>Public model card + clinical paper</li><li>50 000+ patients on platform</li></ul></div>
+        </div>
+      </article>
+
+      <article class="phase">
+        <header class="phase-head">
+          <span class="phase-n">Phase 04</span>
+          <span class="phase-time">Months 13 &ndash; 18 &middot; Enterprise &amp; Scale</span>
+        </header>
+        <h3>EMR Integration, ECG Patch, Government &amp; Insurance</h3>
+        <p>Full HL7 + EMR connectors, clinical-grade ECG patch on a Class B regulatory track, multi-tenant white-label, and PMJAY / state-government deployment.</p>
+        <div class="phase-cols">
+          <div><h5>Hardware</h5><ul><li>Clinical-grade ECG patch</li><li>Hub v2 with cellular-first SKU</li></ul></div>
+          <div><h5>Software</h5><ul><li>HL7 v2 + Epic, Cerner, Meditech, Allscripts, NHS Connect</li><li>White-label tenancy + SSO</li><li>Government scheme reporting</li><li>Insurance partner data feeds</li><li>HIPAA-equivalent posture</li></ul></div>
+          <div><h5>Outcomes</h5><ul><li>3 EMR partner integrations</li><li>1 state-govt MoU (India), 1 NHS / EU pilot</li><li>1 insurance pilot</li><li>CDSCO Class B for ECG patch</li><li>Series-A scale revenue</li></ul></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPLIANCE ===== -->
+<section id="compliance" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 13 ] COMPLIANCE &amp; CERTIFICATION</span>
+      <h2 class="section-title">Healthcare doesn't reward speed alone &mdash; it rewards trust.</h2>
+      <p class="section-lede">Compliance is treated as a product surface, not paperwork. Every release ships an updated audit log, every device has a documented risk file.</p>
+    </div>
+    <div class="grid-4">
+      <article class="card"><h4>HL7 FHIR R4</h4><p>The clinical record store is FHIR-native. Partner integrations are spec-conformant from day one across every market.</p></article>
+      <article class="card"><h4>Privacy regimes</h4><p>GDPR (EU), HIPAA (US), DPDP 2023 (India), POPIA (South Africa), UK GDPR. Lawful basis, purpose limitation, and consent built into the platform core, switchable per region.</p></article>
+      <article class="card"><h4>Medical device clearance</h4><p>CDSCO (India), CE Mark / EU MDR, FDA 510(k) (US), MHRA (UK), SAHPRA (South Africa). Phased certification by SKU and market on a rolling 18-month plan.</p></article>
+      <article class="card"><h4>National health networks</h4><p>ABDM (India), NHS Digital (UK), Carequality + DirectTrust (US), European Health Data Space. Native bridges to each market's health-data backbone.</p></article>
+      <article class="card"><h4>ISO 13485</h4><p>Quality management system for medical devices &mdash; the global baseline that anchors our manufacturing partnerships in every market.</p></article>
+      <article class="card"><h4>ISO 27001 + SOC 2</h4><p>Information security for the cloud platform &mdash; mandatory for hospital, insurance, and government procurement worldwide.</p></article>
+      <article class="card"><h4>Hardware regulatory</h4><p>BIS (India), CE + RED (EU), FCC (US), UKCA (UK), ICASA (South Africa). Built into manufacturing partner SOWs from day one.</p></article>
+      <article class="card"><h4>Multi-region cloud</h4><p>AWS regions in Mumbai, Frankfurt, N. Virginia, and Cape Town. Per-market data residency, encryption, and audit trail by default.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GTM ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 14 ] GO-TO-MARKET</span>
+      <h2 class="section-title">A wedge into hospitals. A funnel into homes.</h2>
+    </div>
+    <div class="gtm">
+      <article class="gtm-step"><span class="gtm-n">1</span><div><h3>Land in 2&ndash;3 mid-tier hospitals (India launch)</h3><p>Start with progressive private hospitals (200&ndash;400 beds) in India where the medical superintendent is a champion. Free pilot, joint clinical paper, paid roll-out. Same playbook then runs in UK NHS Trusts and US regional hospital networks.</p></div></article>
+      <article class="gtm-step"><span class="gtm-n">2</span><div><h3>Expand into old-age home networks</h3><p>India's organised assisted-living sector is a small, dense, under-served buyer set &mdash; ideal for a vertical sales motion with high reference value.</p></div></article>
+      <article class="gtm-step"><span class="gtm-n">3</span><div><h3>Convert family installs into home-care</h3><p>Every patient discharged from a PulseGrid hospital is offered a take-home kit &mdash; a pre-qualified, in-funnel, high-intent buyer.</p></div></article>
+      <article class="gtm-step"><span class="gtm-n">4</span><div><h3>Lab partnerships drive ubiquity</h3><p>Diagnostic chains carry the patient app to their own customer base, becoming a distribution layer for the platform.</p></div></article>
+      <article class="gtm-step"><span class="gtm-n">5</span><div><h3>Government &amp; insurance &mdash; the scale unlock</h3><p>State health missions and PMJAY (India), NHS Trusts (UK), Medicare Advantage and large self-insured employers (US), state-level public health (EU), and insurance carriers globally buy in bulk once the clinical evidence is published.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVENUE ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 15 ] REVENUE MODEL</span>
+      <h2 class="section-title">Five revenue lines &mdash; hardware-led, software-compounding.</h2>
+    </div>
+    <div class="grid-5">
+      <article class="rev"><h3>Hardware kit sales</h3><p>One-time per smart room or home kit &mdash; sold to hospitals, old-age homes, and direct-to-consumer.</p><span class="rev-tag">One-time</span></article>
+      <article class="rev"><h3>SaaS &mdash; per bed / patient</h3><p>Monthly subscription for the cloud platform. Tiered: vitals-only, clinical, enterprise.</p><span class="rev-tag">Recurring</span></article>
+      <article class="rev"><h3>AI premium tier</h3><p>Deterioration prediction, clinician copilot, sleep analytics &mdash; a paid layer on top of base SaaS.</p><span class="rev-tag">Recurring</span></article>
+      <article class="rev"><h3>Family subscriptions</h3><p>D2C subscription for home-care kit holders &mdash; vitals, alerts, daily digest.</p><span class="rev-tag">Recurring</span></article>
+      <article class="rev"><h3>Enterprise &amp; government</h3><p>Volume licensing for hospital chains, state health missions, and insurance carriers.</p><span class="rev-tag">Annual contract</span></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RISK REGISTER ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 16 ] RISK REGISTER</span>
+      <h2 class="section-title">What can go wrong, and how we contain it.</h2>
+    </div>
+    <div class="risks">
+      <div class="risk"><div class="risk-name">Medical-device certification timeline</div><div class="risk-sev sev-h">High</div><div class="risk-mit">Class A track for Phase 1; clinical advisor on board from week one; engaged a regulatory consultant pre-launch; scope ECG patch (Class B) for Phase 4 only.</div></div>
+      <div class="risk"><div class="risk-name">Hospital workflow adoption resistance</div><div class="risk-sev sev-h">High</div><div class="risk-mit">Invisible-by-default &mdash; vitals flow automatically without nurse re-charting. Champion-led pilots. Workflow integration as a paid service, not a customer chore.</div></div>
+      <div class="risk"><div class="risk-name">Connectivity in rural / under-served areas (any market)</div><div class="risk-sev sev-m">Med</div><div class="risk-mit">Hub is offline-first; LTE failover SIM included; LoRa for in-facility links removes WiFi dependency.</div></div>
+      <div class="risk"><div class="risk-name">Wearable battery / comfort</div><div class="risk-sev sev-m">Med</div><div class="risk-mit">5&ndash;7 day target; radar covers vitals when the band is being charged or removed; modular SKUs by acuity.</div></div>
+      <div class="risk"><div class="risk-name">Patient privacy &amp; data breach</div><div class="risk-sev sev-h">High</div><div class="risk-mit">Cloud HSM-backed encryption, TLS 1.3 everywhere, mutual auth on devices, India data residency, ISO 27001, third-party pen tests every release.</div></div>
+      <div class="risk"><div class="risk-name">Hardware supply chain</div><div class="risk-sev sev-m">Med</div><div class="risk-mit">Two contract manufacturers across India + Mexico / Eastern Europe (close-to-market sourcing); chip-second-source for critical parts (radar, MCU); 90-day buffer stock from Phase 2.</div></div>
+      <div class="risk"><div class="risk-name">Liability for missed alerts</div><div class="risk-sev sev-h">High</div><div class="risk-mit">Decision-support framing, not autonomous diagnosis; explicit clinician sign-off in workflow; product-liability insurance from Phase 2.</div></div>
+      <div class="risk"><div class="risk-name">AI false positives eroding trust</div><div class="risk-sev sev-m">Med</div><div class="risk-mit">Multi-modal cross-validation; tunable thresholds per facility; clinician feedback loop into model retraining.</div></div>
+      <div class="risk"><div class="risk-name">Slow EMR integration in legacy hospitals</div><div class="risk-sev sev-m">Med</div><div class="risk-mit">Standalone web product works without EMR integration. HL7 + FHIR connectors are an upsell, not a precondition.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 17 ] FOUNDING TEAM SHAPE</span>
+      <h2 class="section-title">A small, senior, multidisciplinary core.</h2>
+      <p class="section-lede">The Phase-1 team is intentionally lean &mdash; eight roles cover the full stack from silicon to bedside.</p>
+    </div>
+    <div class="grid-4">
+      <article class="member"><span class="member-r">EE</span><h3>Embedded / Hardware Lead</h3><p>Owns firmware on ESP32 + nRF, hub Linux, sensor calibration, BLE/LoRa stacks, OTA pipeline.</p></article>
+      <article class="member"><span class="member-r">BE</span><h3>Backend Engineer</h3><p>Owns ingest, FHIR store, APIs, multi-tenancy, MQTT broker operations.</p></article>
+      <article class="member"><span class="member-r">FE</span><h3>Frontend / Clinical UX</h3><p>Owns the hospital web dashboard, lab portal, old-age-home suite. Interaction design with clinical users.</p></article>
+      <article class="member"><span class="member-r">M</span><h3>Mobile Engineer</h3><p>Owns patient + family apps, smartwatch companion, push-notification reliability.</p></article>
+      <article class="member"><span class="member-r">AI</span><h3>ML / Data Engineer</h3><p>Owns NEWS2 + fall + sleep + deterioration models, MLOps, clinician copilot integration.</p></article>
+      <article class="member"><span class="member-r">CL</span><h3>Clinical Advisor (MD)</h3><p>Part-time. Defines clinical thresholds, validates pilots, signs off on safety claims, opens hospital doors.</p></article>
+      <article class="member"><span class="member-r">DO</span><h3>DevOps / Security</h3><p>Owns AWS estate, observability, ISO 27001 readiness, device PKI, incident response.</p></article>
+      <article class="member"><span class="member-r">PM</span><h3>Product / Reg-Affairs</h3><p>Owns roadmap, customer development, CDSCO + ABDM filings, partner relationships.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY NOW ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 18 ] WHY NOW</span>
+      <h2 class="section-title">A rare alignment of demographics, infrastructure, and silicon.</h2>
+    </div>
+    <div class="grid-3">
+      <article class="card"><h4>Aging populations everywhere</h4><p>India's over-60 cohort doubles by 2050. The EU passes 30% over-65 by mid-century. The US adds 25M over-65 by 2040. The UK NHS faces a chronic-care crisis today. The maths is the same in every market: not enough nurses, not enough beds.</p></article>
+      <article class="card"><h4>National health data fabrics are real</h4><p>India's ABDM, the UK's NHS Digital, the US's Carequality network, the EU's European Health Data Space &mdash; the public-sector health-data plumbing that was missing for a decade is now real infrastructure. Building on it is no longer a bet.</p></article>
+      <article class="card"><h4>Post-COVID home-care normalisation</h4><p>Patients and families now expect to be monitored at home. The objection isn't comfort &mdash; it's the absence of a credible product.</p></article>
+      <article class="card"><h4>Sensor &amp; edge-AI cost collapse</h4><p>60 GHz radar, BLE 5 SoCs, and edge TPUs are at a price point that didn't exist three years ago. The bedside hub is finally affordable per room.</p></article>
+      <article class="card"><h4>Insurance is hungry for prevention</h4><p>Indian and global health insurers are actively buying telemetry that lowers their loss ratios &mdash; we ship exactly that telemetry.</p></article>
+      <article class="card"><h4>The EMR layer alone has lost</h4><p>EMRs digitised the chart. They didn't continuously watch the patient. The next decade in health tech belongs to the layer that does.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPETITIVE LANDSCAPE ===== -->
+<section id="competitors" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 19 ] COMPETITIVE LANDSCAPE</span>
+      <h2 class="section-title">Adjacent giants. None of them are us.</h2>
+      <p class="section-lede">There are leaders in patient monitoring, in single-condition wearables, and in aging-in-place. None of them ship a multi-stakeholder, multi-condition, multi-market platform that runs end-to-end from the bedside to the family's phone.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="comp-card comp-1">
+        <span class="comp-cat">Hospital incumbents</span>
+        <h3>Philips IntelliVue &middot; GE CARESCAPE &middot; Mindray</h3>
+        <p class="comp-what">Trusted in ICU, deep clinical integration, certified for high-acuity care. Sell $10K+ monitor towers per bed. Strong in US, EU, India, China.</p>
+        <p class="comp-edge"><strong>How we differ:</strong> ~1/10th the cost per room, modular kit, follows the patient home. The incumbents stop at the hospital door &mdash; we keep going.</p>
+      </article>
+
+      <article class="comp-card comp-2">
+        <span class="comp-cat">Continuous-care startup</span>
+        <h3>Biofourmis &middot; Current Health</h3>
+        <p class="comp-what">FDA-cleared continuous monitoring + AI for cardiology and post-acute. Strong US enterprise traction; Current Health was acquired by Best Buy in 2021.</p>
+        <p class="comp-edge"><strong>How we differ:</strong> Multi-modal sensing (mat + radar + wearable, not wearable-only), multi-stakeholder platform, multi-market regulatory from day one.</p>
+      </article>
+
+      <article class="comp-card comp-3">
+        <span class="comp-cat">CGM leaders</span>
+        <h3>Abbott FreeStyle Libre &middot; Dexcom</h3>
+        <p class="comp-what">Gold-standard CGM. Mass-market diabetic users, mature regulatory, billions in annual revenue. Available across all major markets.</p>
+        <p class="comp-edge"><strong>How we differ:</strong> CGM is one sensor in our 13-device stack. Glucose + sleep + HR + falls + meds in a single platform &mdash; not a single-condition silo.</p>
+      </article>
+
+      <article class="comp-card comp-4">
+        <span class="comp-cat">ECG patch leaders</span>
+        <h3>iRhythm Zio &middot; Bardy DX</h3>
+        <p class="comp-what">Best-in-class arrhythmia detection, FDA cleared, distributed via cardiologists. Strong post-event analysis with 14-day patches.</p>
+        <p class="comp-edge"><strong>How we differ:</strong> Real-time alerting (not retrospective), integrated with vitals, sleep, falls, meds. Cardiac is one of many use cases &mdash; not the entire product.</p>
+      </article>
+
+      <article class="comp-card comp-5">
+        <span class="comp-cat">TeleCare &middot; aging-in-place</span>
+        <h3>Tunstall &middot; Vayyar Care &middot; Lively</h3>
+        <p class="comp-what">Established in UK and EU TeleCare; US elder-care via Best Buy. Radar-based fall detection, pendant alarms, basic vitals. Tunstall has 5M+ connected users globally.</p>
+        <p class="comp-edge"><strong>How we differ:</strong> Continuous clinical-grade vitals (not just falls), hospital integration, lab connectivity. We're upstream from the alarm.</p>
+      </article>
+
+      <article class="comp-card comp-6">
+        <span class="comp-cat">Consumer wearables</span>
+        <h3>Apple Watch &middot; Fitbit &middot; Samsung Health</h3>
+        <p class="comp-what">Massive distribution, expanding clinical features (AFib, fall detection, sleep apnea). Strong UX, broad consumer trust.</p>
+        <p class="comp-edge"><strong>How we differ:</strong> Hospital-grade and clinically accountable. The watch becomes a sensor in our network, not the network itself. Episodic vs. continuous.</p>
+      </article>
+    </div>
+
+    <!-- Comparison matrix -->
+    <div class="comp-matrix-wrap">
+      <h3 class="comp-matrix-title">Feature-by-feature comparison</h3>
+      <div class="comp-matrix-scroll">
+        <table class="comp-matrix">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Hospital incumbents</th>
+              <th>Continuous-care</th>
+              <th>CGM / ECG patch</th>
+              <th>TeleCare</th>
+              <th>Consumer wearables</th>
+              <th class="comp-us">PulseGrid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Continuous in-room vitals</td><td class="yes">&#10003;</td><td class="part">~</td><td class="no">&mdash;</td><td class="part">~</td><td class="no">&mdash;</td><td class="us">&#10003;</td></tr>
+            <tr><td>Multi-modal sensing (radar + mat + wearable)</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="part">~</td><td class="no">&mdash;</td><td class="us">&#10003;</td></tr>
+            <tr><td>Hospital + home + lab + family on one platform</td><td class="no">&mdash;</td><td class="part">~</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="us">&#10003;</td></tr>
+            <tr><td>Old-age home / care facility suite</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="part">~</td><td class="no">&mdash;</td><td class="us">&#10003;</td></tr>
+            <tr><td>FHIR-native lab connectivity</td><td class="part">~</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="us">&#10003;</td></tr>
+            <tr><td>Diabetes (CGM) integration</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="us">&#10003;</td></tr>
+            <tr><td>Cardiac (ECG) integration</td><td class="part">~</td><td class="part">~</td><td class="yes">&#10003;</td><td class="no">&mdash;</td><td class="part">~</td><td class="us">&#10003;</td></tr>
+            <tr><td>Edge AI on bedside hub (offline-capable)</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="part">~</td><td class="us">&#10003;</td></tr>
+            <tr><td>Sub-$1,000 cost per smart room</td><td class="no">&mdash;</td><td class="part">~</td><td class="yes">&#10003;</td><td class="part">~</td><td class="yes">&#10003;</td><td class="us">&#10003;</td></tr>
+            <tr><td>Multi-market regulatory (CDSCO + CE + FDA + MHRA)</td><td class="part">~</td><td class="part">~</td><td class="part">~</td><td class="part">~</td><td class="part">~</td><td class="us">&#10003;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="comp-matrix-note">&#10003; Full capability &middot; ~ Partial / single-condition &middot; &mdash; Not in scope</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MOAT ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">[ 20 ] DEFENSIBILITY</span>
+      <h2 class="section-title">Why this is hard to copy.</h2>
+    </div>
+    <div class="grid-4">
+      <article class="card"><h4>Vertical hardware + software</h4><p>Pure-software competitors lack the bedside data. Pure-hardware competitors lack the platform. We ship both, certified together.</p></article>
+      <article class="card"><h4>Multi-stakeholder data network</h4><p>Each new hospital brings labs and families. Each new old-age home brings residents and clinicians. Network effects compound on the data layer, not just the user count.</p></article>
+      <article class="card"><h4>Regulatory capital</h4><p>CDSCO files, ISO certifications, ABDM milestones &mdash; these take time, money, and clinical relationships. A copy-cat starts that clock from zero.</p></article>
+      <article class="card"><h4>Clinical data flywheel</h4><p>More instrumented beds, better deterioration model, more accurate alerts, better hospital outcomes, more beds. The model gets harder to catch every quarter.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="closing">
+  <div class="container narrow">
+    <span class="tag">[ 21 ] THE ASK</span>
+    <h2>We're building the connected nervous system for healthcare. We'd like you with us.</h2>
+    <p>This proposal is the public-shareable version. Detailed financial model, hardware BOM, clinical-pilot LOIs, and a hands-on demo of the hospital dashboard and home-care kit are available under NDA on request.</p>
+    <div class="closing-cta">
+      <a class="btn btn-primary" href="#top">&uarr; Back to top</a>
+      <a class="btn" href="#roadmap">View roadmap</a>
+      <a class="btn" href="#hardware">View hardware</a>
+    </div>
+    <p class="closing-sig">PulseGrid &middot; Connected Health Platform &middot; Pitch Proposal v1.0 &middot; 2026</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 PulseGrid &middot; Confidential pitch material &middot; Not for redistribution.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   PulseGrid - Pitch Proposal
+   Plain JavaScript
+   ============================================================ */
+
+(function () {
+  'use strict';
+
+  /* ---------- Tabs ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  var panels = document.querySelectorAll('.panel');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var key = tab.getAttribute('data-tab');
+
+      tabs.forEach(function (t) { t.classList.remove('is-active'); });
+      panels.forEach(function (p) { p.classList.remove('is-active'); });
+
+      tab.classList.add('is-active');
+      var panel = document.querySelector('[data-panel="' + key + '"]');
+      if (panel) panel.classList.add('is-active');
+    });
+  });
+
+  /* ---------- Animated tickers in hero readouts ---------- */
+  var tickers = document.querySelectorAll('.ticker');
+  tickers.forEach(function (el) {
+    var min = parseInt(el.getAttribute('data-min'), 10);
+    var max = parseInt(el.getAttribute('data-max'), 10);
+    if (isNaN(min) || isNaN(max)) return;
+
+    var current = parseInt(el.textContent, 10);
+    if (isNaN(current)) current = Math.round((min + max) / 2);
+
+    setInterval(function () {
+      var target = Math.floor(min + Math.random() * (max - min + 1));
+      var step = current < target ? 1 : (current > target ? -1 : 0);
+      current = current + step;
+      if (current < min) current = min;
+      if (current > max) current = max;
+      el.textContent = current;
+    }, 900 + Math.random() * 600);
+  });
+
+  /* ---------- Scroll-reveal sections ---------- */
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('.section, .band').forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.section, .band').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  /* ---------- Active nav highlighting on scroll ---------- */
+  var navLinks = document.querySelectorAll('.nav a');
+  if (navLinks.length && 'IntersectionObserver' in window) {
+    var sectionMap = {};
+    navLinks.forEach(function (link) {
+      var id = link.getAttribute('href').replace('#', '');
+      sectionMap[id] = link;
+    });
+
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = sectionMap[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
+          navLinks.forEach(function (l) {
+            l.style.color = '';
+            l.style.borderBottomColor = '';
+          });
+          link.style.color = '#dc2626';
+          link.style.borderBottomColor = '#dc2626';
+        }
+      });
+    }, { threshold: [0.25, 0.5] });
+
+    Object.keys(sectionMap).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) navObserver.observe(section);
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
